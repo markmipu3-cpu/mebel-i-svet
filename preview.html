@@ -373,48 +373,144 @@ button { font-family: inherit; cursor: pointer; }
 .btn-more.is-done { opacity: 0.6; cursor: default; border-color: var(--line); color: var(--muted); }
 .btn-more.is-done:hover { background: transparent; color: var(--muted); }
 
+/* ============================================================
+   Interactive: add-to-cart, filter popovers, search, drawers, modal
+   ============================================================ */
+
+/* add to cart on card */
+.add-cart {
+  margin-top: 0.7rem; width: 100%;
+  background: var(--navy); color: #fff; border: none;
+  font-family: var(--ff-body); font-weight: 500; font-size: 0.85rem;
+  padding: 0.65rem; border-radius: var(--r-md);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease, color 0.2s ease;
+}
+.card:hover .add-cart, .card:focus-within .add-cart { opacity: 1; transform: none; }
+.add-cart:hover { background: var(--gold); color: var(--navy-deep); }
+
+/* filter popovers */
+.filter-group { position: relative; }
+.chip--pop { padding-right: 1.9rem; }
+.chip--pop::after {
+  content: ""; position: absolute; right: 0.8rem; top: 50%;
+  width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-70%) rotate(45deg);
+}
+.filter-pop {
+  position: absolute; top: calc(100% + 8px); left: 0; z-index: 40;
+  min-width: 230px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--r-md); box-shadow: 0 16px 36px -20px rgba(21,36,63,0.5);
+  padding: 0.5rem; display: none;
+}
+.filter-group.open .filter-pop { display: block; }
+.filter-group.open > .chip { border-color: var(--gold); }
+.opt { display: flex; align-items: center; gap: 0.55rem; padding: 0.45rem 0.55rem; border-radius: var(--r-sm); font-size: 0.86rem; cursor: pointer; }
+.opt:hover { background: var(--ivory); }
+.opt input { accent-color: var(--navy); width: 15px; height: 15px; flex: 0 0 auto; }
+.opt .dot { width: 13px; height: 13px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); flex: 0 0 auto; }
+.chip--reset { color: var(--sale); border-color: rgba(180,71,44,0.4); }
+.chip--reset:hover { background: rgba(180,71,44,0.06); border-color: var(--sale); }
+
+/* search bar */
+.search-bar { background: var(--navy); border-bottom: 1px solid rgba(201,162,76,0.22); }
+.search-inner { display: flex; align-items: center; gap: 0.8rem; padding-block: 0.9rem; color: var(--gold); }
+.search-inner > .icon { width: 20px; height: 20px; flex: 0 0 auto; }
+.search-inner input {
+  flex: 1; background: transparent; border: none; color: #fff;
+  font-family: inherit; font-size: 1rem; padding: 0.3rem 0;
+}
+.search-inner input::placeholder { color: rgba(237,231,217,0.55); }
+.search-inner input:focus { outline: none; }
+.search-bar .icon-btn { color: var(--gold); }
+.search-bar .icon-btn:hover { background: rgba(201,162,76,0.12); }
+
+/* grid empty state */
+.grid-empty { text-align: center; color: var(--muted); padding: 3rem 1rem; font-size: 0.98rem; }
+
+/* backdrop + scroll lock */
+.backdrop { position: fixed; inset: 0; background: rgba(15,26,48,0.5); z-index: 80; opacity: 0; transition: opacity 0.3s ease; }
+.backdrop.show { opacity: 1; }
+body.no-scroll { overflow: hidden; }
+
+/* drawer */
+.drawer {
+  position: fixed; top: 0; right: 0; height: 100%; width: min(400px, 92vw);
+  background: var(--card); z-index: 90; display: flex; flex-direction: column;
+  transform: translateX(100%); transition: transform 0.35s ease;
+  box-shadow: -20px 0 50px -30px rgba(0,0,0,0.5);
+}
+.drawer.open { transform: none; }
+.drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.2rem; border-bottom: 1px solid var(--line); }
+.drawer-head h2 { font-family: var(--ff-display); font-weight: 600; font-size: 1.2rem; margin: 0; color: var(--navy); }
+.drawer-close { color: var(--muted); }
+.drawer-close:hover { background: var(--ivory); color: var(--ink); }
+.drawer-body { flex: 1; overflow-y: auto; padding: 0.4rem 1.2rem; }
+.drawer-empty { padding: 2.6rem 1.2rem; text-align: center; color: var(--muted); font-size: 0.92rem; }
+.drawer-foot { border-top: 1px solid var(--line); padding: 1.1rem 1.2rem; }
+.drawer-total { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.9rem; font-size: 0.95rem; }
+.drawer-total b { font-size: 1.15rem; color: var(--gold-ink); }
+.drawer-note { margin: 0.7rem 0 0; font-size: 0.85rem; color: var(--emerald); min-height: 1rem; }
+
+/* drawer line items */
+.line-item { display: flex; gap: 0.8rem; padding: 0.85rem 0; border-bottom: 1px solid var(--line-soft); }
+.line-thumb { width: 58px; height: 58px; flex: 0 0 auto; border-radius: var(--r-sm); background: var(--img-bg); display: flex; align-items: center; justify-content: center; color: var(--ink); }
+.line-thumb .fixture { width: 62%; height: 62%; }
+.line-info { flex: 1; min-width: 0; }
+.line-type { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.line-name { font-weight: 500; font-size: 0.92rem; color: var(--navy); }
+.line-price { font-size: 0.88rem; color: var(--gold-ink); font-weight: 600; margin-top: 0.15rem; }
+.line-actions { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--r-pill); }
+.qty button { width: 27px; height: 27px; border: none; background: transparent; color: var(--ink); font-size: 1.05rem; line-height: 1; cursor: pointer; }
+.qty button:hover { color: var(--gold-ink); }
+.qty span { min-width: 26px; text-align: center; font-size: 0.85rem; }
+.line-remove { background: none; border: none; color: var(--muted); font-size: 0.78rem; cursor: pointer; margin-left: auto; }
+.line-remove:hover { color: var(--sale); }
+.line-add { background: var(--navy); color: #fff; border: none; font-size: 0.76rem; padding: 0.4rem 0.8rem; border-radius: var(--r-pill); cursor: pointer; }
+.line-add:hover { background: var(--gold); color: var(--navy-deep); }
+
+/* primary button */
+.btn-primary { width: 100%; background: var(--gold); color: var(--navy-deep); border: none; font-family: var(--ff-body); font-weight: 600; font-size: 0.92rem; padding: 0.85rem; border-radius: var(--r-md); cursor: pointer; transition: background 0.2s ease; }
+.btn-primary:hover { background: #E2C681; }
+
+/* account modal */
+.modal { position: fixed; inset: 0; z-index: 95; display: none; align-items: center; justify-content: center; padding: 1.2rem; background: rgba(15,26,48,0.5); }
+.modal.open { display: flex; }
+.modal-card { position: relative; width: min(380px, 100%); background: var(--card); border-radius: var(--r-lg); padding: 1.9rem 1.6rem 1.6rem; box-shadow: 0 30px 70px -30px rgba(0,0,0,0.5); }
+.modal-close { position: absolute; top: 0.6rem; right: 0.6rem; color: var(--muted); }
+.modal-close:hover { background: var(--ivory); color: var(--ink); }
+.tabs { display: flex; margin-bottom: 1.3rem; border-bottom: 1px solid var(--line); }
+.tab { background: none; border: none; padding: 0.55rem 0.2rem; margin-right: 1.4rem; font-size: 0.96rem; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; }
+.tab.is-on { color: var(--navy); border-bottom-color: var(--gold); font-weight: 500; }
+.auth-form { display: flex; flex-direction: column; gap: 0.7rem; }
+.auth-form.is-hidden { display: none; }
+.auth-form input { font-family: inherit; font-size: 0.92rem; padding: 0.8rem 1rem; border: 1px solid var(--line); border-radius: var(--r-md); }
+.auth-form input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,76,0.18); }
+.auth-hint { font-size: 0.8rem; color: var(--muted); margin: 0; }
+.auth-note { font-size: 0.86rem; color: var(--emerald); margin: 0.9rem 0 0; min-height: 1rem; }
+
+@media (max-width: 760px) {
+  .add-cart { opacity: 1; transform: none; }
+  .filter-pop { min-width: 200px; }
+}
+
 </style>
 </head>
 <body>
-
   <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="f-pendant" viewBox="0 0 120 120">
-      <path d="M42 18 H78"/><path d="M60 18 V42"/>
-      <path d="M46 64 Q46 42 60 42 Q74 42 74 64"/><path d="M44 64 H76"/>
-      <circle cx="60" cy="72" r="5"/>
-    </symbol>
-    <symbol id="f-chandelier" viewBox="0 0 120 120">
-      <path d="M60 16 V26"/><circle cx="60" cy="29" r="3.4"/><path d="M60 32 V50"/>
-      <path d="M60 35 C46 37 40 44 40 52"/><path d="M60 35 C74 37 80 44 80 52"/>
-      <path d="M37 52 H43"/><path d="M57 50 H63"/><path d="M77 52 H83"/>
-      <circle cx="40" cy="56" r="4.6"/><circle cx="60" cy="54" r="4.6"/><circle cx="80" cy="56" r="4.6"/>
-    </symbol>
-    <symbol id="f-floor" viewBox="0 0 120 120">
-      <path d="M46 28 H74 L70 46 H50 Z"/><path d="M60 46 V94"/>
-      <path d="M48 96 Q60 100 72 96"/>
-    </symbol>
-    <symbol id="f-table" viewBox="0 0 120 120">
-      <path d="M48 38 H72 L68 56 H52 Z"/><path d="M60 56 V76"/>
-      <path d="M52 80 Q60 84 68 80"/>
-    </symbol>
-    <symbol id="f-sconce" viewBox="0 0 120 120">
-      <path d="M32 34 V86"/><circle cx="32" cy="60" r="4.4"/>
-      <path d="M36 60 H58"/><path d="M58 60 V53"/>
-      <path d="M50 53 H66 L62 45 H54 Z"/><circle cx="58" cy="50" r="1.6"/>
-    </symbol>
-    <symbol id="f-flush" viewBox="0 0 120 120">
-      <path d="M38 38 H82"/><path d="M46 38 Q60 60 74 38"/>
-      <path d="M52 38 Q60 51 68 38"/><circle cx="60" cy="50" r="2.4"/>
-    </symbol>
+    <symbol id="f-pendant" viewBox="0 0 120 120"><path d="M42 18 H78"/><path d="M60 18 V42"/><path d="M46 64 Q46 42 60 42 Q74 42 74 64"/><path d="M44 64 H76"/><circle cx="60" cy="72" r="5"/></symbol>
+    <symbol id="f-chandelier" viewBox="0 0 120 120"><path d="M60 16 V26"/><circle cx="60" cy="29" r="3.4"/><path d="M60 32 V50"/><path d="M60 35 C46 37 40 44 40 52"/><path d="M60 35 C74 37 80 44 80 52"/><path d="M37 52 H43"/><path d="M57 50 H63"/><path d="M77 52 H83"/><circle cx="40" cy="56" r="4.6"/><circle cx="60" cy="54" r="4.6"/><circle cx="80" cy="56" r="4.6"/></symbol>
+    <symbol id="f-floor" viewBox="0 0 120 120"><path d="M46 28 H74 L70 46 H50 Z"/><path d="M60 46 V94"/><path d="M48 96 Q60 100 72 96"/></symbol>
+    <symbol id="f-table" viewBox="0 0 120 120"><path d="M48 38 H72 L68 56 H52 Z"/><path d="M60 56 V76"/><path d="M52 80 Q60 84 68 80"/></symbol>
+    <symbol id="f-sconce" viewBox="0 0 120 120"><path d="M32 34 V86"/><circle cx="32" cy="60" r="4.4"/><path d="M36 60 H58"/><path d="M58 60 V53"/><path d="M50 53 H66 L62 45 H54 Z"/><circle cx="58" cy="50" r="1.6"/></symbol>
+    <symbol id="f-flush" viewBox="0 0 120 120"><path d="M38 38 H82"/><path d="M46 38 Q60 60 74 38"/><path d="M52 38 Q60 51 68 38"/><circle cx="60" cy="50" r="2.4"/></symbol>
   </svg>
-
   <div class="promo">Летняя распродажа — <strong>скидки до 50%</strong> на освещение · Бесплатная доставка от 30 000 ₽</div>
 
   <header class="site-header">
     <div class="container header-inner">
-      <button class="icon-btn nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="main-nav">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="main-nav"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <a class="logo" href="/">Мебель и свет</a>
       <nav class="main-nav" id="main-nav" aria-label="Основное меню">
         <ul>
@@ -427,35 +523,28 @@ button { font-family: inherit; cursor: pointer; }
         </ul>
       </nav>
       <div class="header-actions">
-        <button class="icon-btn" type="button" aria-label="Поиск">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
-        </button>
-        <button class="icon-btn" type="button" aria-label="Личный кабинет">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>
-        </button>
-        <button class="icon-btn" type="button" aria-label="Избранное">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg>
-          <span class="count-badge" data-fav-count>0</span>
-        </button>
-        <button class="icon-btn" type="button" aria-label="Корзина">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
-          <span class="count-badge">0</span>
-        </button>
+        <button class="icon-btn" type="button" data-search-open aria-label="Поиск"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg></button>
+        <button class="icon-btn" type="button" data-account-open aria-label="Личный кабинет"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></button>
+        <button class="icon-btn" type="button" data-fav-open aria-label="Избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg><span class="count-badge" data-fav-count>0</span></button>
+        <button class="icon-btn" type="button" data-cart-open aria-label="Корзина"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="count-badge" data-cart-count>0</span></button>
       </div>
     </div>
   </header>
 
+  <div class="search-bar" data-search-bar hidden>
+    <div class="container search-inner">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+      <input type="search" data-search-input placeholder="Поиск по каталогу: «люстра», «торшер»…" aria-label="Поиск по каталогу">
+      <button class="icon-btn" type="button" data-search-close aria-label="Закрыть поиск"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </div>
   <main>
     <div class="container">
-      <nav class="crumbs" aria-label="Хлебные крошки">
-        <a href="/">Главная</a> / <span>Освещение</span>
-      </nav>
-
+      <nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a> / <span>Освещение</span></nav>
       <div class="page-head">
         <h1>Освещение</h1>
         <p>Люстры, подвесы, настольные лампы, торшеры, бра и потолочные светильники — выберите свет для каждой комнаты.</p>
       </div>
-
       <section class="subcats" aria-label="Подкатегории">
         <div class="subcat-row">
           <a class="subcat" href="/lyustry/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg><span>Люстры</span></a>
@@ -466,21 +555,26 @@ button { font-family: inherit; cursor: pointer; }
           <a class="subcat" href="/potolochnye/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-flush"/></svg><span>Потолочные</span></a>
         </div>
       </section>
-
       <div class="toolbar">
         <div class="filters">
-          <button class="chip" type="button" aria-label="Фильтры">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg> Фильтры
-          </button>
           <button class="chip" type="button" data-filter="stock">В наличии</button>
-          <button class="chip" type="button">Цена</button>
-          <button class="chip" type="button">Тип</button>
-          <button class="chip" type="button">Цвет</button>
+          <div class="filter-group" data-group="type">
+            <button class="chip chip--pop" type="button" aria-haspopup="true" aria-expanded="false">Тип</button>
+            <div class="filter-pop"><label class="opt"><input type="checkbox" data-f-type value="chandelier"><span>Люстры</span></label><label class="opt"><input type="checkbox" data-f-type value="pendant"><span>Подвесы</span></label><label class="opt"><input type="checkbox" data-f-type value="table"><span>Настольные лампы</span></label><label class="opt"><input type="checkbox" data-f-type value="floor"><span>Торшеры</span></label><label class="opt"><input type="checkbox" data-f-type value="sconce"><span>Бра</span></label><label class="opt"><input type="checkbox" data-f-type value="flush"><span>Потолочные</span></label></div>
+          </div>
+          <div class="filter-group" data-group="color">
+            <button class="chip chip--pop" type="button" aria-haspopup="true" aria-expanded="false">Цвет</button>
+            <div class="filter-pop"><label class="opt"><input type="checkbox" data-f-color value="gold"><i class="dot sw-gold"></i><span>Золото</span></label><label class="opt"><input type="checkbox" data-f-color value="black"><i class="dot sw-black"></i><span>Чёрный</span></label><label class="opt"><input type="checkbox" data-f-color value="chrome"><i class="dot sw-chrome"></i><span>Хром</span></label><label class="opt"><input type="checkbox" data-f-color value="emerald"><i class="dot sw-emerald"></i><span>Изумруд</span></label><label class="opt"><input type="checkbox" data-f-color value="white"><i class="dot sw-white"></i><span>Белый</span></label></div>
+          </div>
+          <div class="filter-group" data-group="price">
+            <button class="chip chip--pop" type="button" aria-haspopup="true" aria-expanded="false">Цена</button>
+            <div class="filter-pop"><label class="opt"><input type="radio" name="price" data-f-price value="any" checked><span>Любая</span></label><label class="opt"><input type="radio" name="price" data-f-price value="lt10"><span>до 10 000 ₽</span></label><label class="opt"><input type="radio" name="price" data-f-price value="10-30"><span>10 000 – 30 000 ₽</span></label><label class="opt"><input type="radio" name="price" data-f-price value="gt30"><span>от 30 000 ₽</span></label></div>
+          </div>
+          <button class="chip chip--reset" type="button" data-reset hidden>Сбросить</button>
         </div>
         <div class="toolbar-right">
           <span class="count"><b data-count>12</b> товаров</span>
-          <label class="sort">
-            <span class="sr-only">Сортировка</span>
+          <label class="sort"><span class="sr-only">Сортировка</span>
             <select data-sort>
               <option value="popular">Популярные</option>
               <option value="cheap">Сначала дешевле</option>
@@ -490,165 +584,155 @@ button { font-family: inherit; cursor: pointer; }
           </label>
         </div>
       </div>
-
       <section class="product-grid" data-grid aria-label="Товары">
-
-        <article class="card" data-price="8900" data-name="Орбита" data-stock="in">
-          <div class="card-media">
-            <span class="badge badge--new">Новинка</span>
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+        <article class="card" data-id="orbita" data-type="pendant" data-price="8900" data-name="Орбита" data-stock="in" data-colors="gold black">
+          <div class="card-media"><span class="badge badge--new">Новинка</span>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-pendant"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Подвес</p><h3 class="card-name">Орбита</h3>
             <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
-            <p class="price"><b>8 900 ₽</b></p>
+            <p class="price"><b>8 900 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Орбита» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="42500" data-name="Вена" data-stock="in">
-          <div class="card-media">
-            <span class="badge badge--hit">Хит</span>
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+        <article class="card" data-id="vena" data-type="chandelier" data-price="42500" data-name="Вена" data-stock="in" data-colors="gold chrome black">
+          <div class="card-media"><span class="badge badge--hit">Хит</span>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Люстра</p><h3 class="card-name">Вена</h3>
             <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-chrome"></span><span class="swatch sw-black"></span></div>
-            <p class="price"><b>42 500 ₽</b></p>
+            <p class="price"><b>42 500 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Вена» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="14700" data-name="Норд" data-stock="out">
+        <article class="card" data-id="nord" data-type="floor" data-price="14700" data-name="Норд" data-stock="out" data-colors="black emerald">
           <div class="card-media">
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-floor"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Торшер</p><h3 class="card-name">Норд</h3>
             <div class="swatches"><span class="swatch sw-black"></span><span class="swatch sw-emerald"></span></div>
-            <p class="price"><b>14 700 ₽</b></p>
+            <p class="price"><b>14 700 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Норд» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="6400" data-name="Сатин" data-stock="in">
+        <article class="card" data-id="satin" data-type="table" data-price="6400" data-name="Сатин" data-stock="in" data-colors="white gold">
           <div class="card-media">
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-table"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Настольная лампа</p><h3 class="card-name">Сатин</h3>
             <div class="swatches"><span class="swatch sw-white"></span><span class="swatch sw-gold"></span></div>
-            <p class="price"><b>6 400 ₽</b></p>
+            <p class="price"><b>6 400 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Сатин» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="4900" data-name="Линия" data-stock="out">
+        <article class="card" data-id="liniya" data-type="sconce" data-price="4900" data-name="Линия" data-stock="out" data-colors="gold black">
           <div class="card-media">
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-sconce"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Бра</p><h3 class="card-name">Линия</h3>
             <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
-            <p class="price"><b>4 900 ₽</b></p>
+            <p class="price"><b>4 900 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Линия» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="9200" data-name="Диск" data-stock="in">
+        <article class="card" data-id="disk" data-type="flush" data-price="9200" data-name="Диск" data-stock="in" data-colors="white chrome">
           <div class="card-media">
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-flush"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Потолочный</p><h3 class="card-name">Диск</h3>
             <div class="swatches"><span class="swatch sw-white"></span><span class="swatch sw-chrome"></span></div>
-            <p class="price"><b>9 200 ₽</b></p>
+            <p class="price"><b>9 200 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Диск» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="56200" data-name="Каскад" data-stock="in">
-          <div class="card-media">
-            <span class="badge badge--sale">−20%</span>
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+        <article class="card" data-id="kaskad" data-type="chandelier" data-price="56200" data-name="Каскад" data-stock="in" data-colors="gold chrome">
+          <div class="card-media"><span class="badge badge--sale">−20%</span>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Люстра</p><h3 class="card-name">Каскад</h3>
             <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-chrome"></span></div>
-            <p class="price"><del>70 200 ₽</del> <b>56 200 ₽</b></p>
+            <p class="price"><del>70 200 ₽</del> <b>56 200 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Каскад» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="5600" data-name="Колба" data-stock="out">
+        <article class="card" data-id="kolba" data-type="pendant" data-price="5600" data-name="Колба" data-stock="out" data-colors="black chrome">
           <div class="card-media">
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-pendant"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Подвес</p><h3 class="card-name">Колба</h3>
             <div class="swatches"><span class="swatch sw-black"></span><span class="swatch sw-chrome"></span></div>
-            <p class="price"><b>5 600 ₽</b></p>
+            <p class="price"><b>5 600 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Колба» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="19900" data-name="Арка" data-stock="in">
-          <div class="card-media">
-            <span class="badge badge--hit">Хит</span>
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+        <article class="card" data-id="arka" data-type="floor" data-price="19900" data-name="Арка" data-stock="in" data-colors="gold black">
+          <div class="card-media"><span class="badge badge--hit">Хит</span>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-floor"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Торшер</p><h3 class="card-name">Арка</h3>
             <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
-            <p class="price"><b>19 900 ₽</b></p>
+            <p class="price"><b>19 900 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Арка» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="7800" data-name="Грин" data-stock="in">
-          <div class="card-media">
-            <span class="badge badge--new">Новинка</span>
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+        <article class="card" data-id="grin" data-type="table" data-price="7800" data-name="Грин" data-stock="in" data-colors="emerald white">
+          <div class="card-media"><span class="badge badge--new">Новинка</span>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-table"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Настольная лампа</p><h3 class="card-name">Грин</h3>
             <div class="swatches"><span class="swatch sw-emerald"></span><span class="swatch sw-white"></span></div>
-            <p class="price"><b>7 800 ₽</b></p>
+            <p class="price"><b>7 800 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Грин» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="6300" data-name="Дуга" data-stock="out">
+        <article class="card" data-id="duga" data-type="sconce" data-price="6300" data-name="Дуга" data-stock="out" data-colors="chrome gold">
           <div class="card-media">
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-sconce"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Бра</p><h3 class="card-name">Дуга</h3>
             <div class="swatches"><span class="swatch sw-chrome"></span><span class="swatch sw-gold"></span></div>
-            <p class="price"><b>6 300 ₽</b></p>
+            <p class="price"><b>6 300 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Дуга» в корзину">В корзину</button>
           </div>
         </article>
-
-        <article class="card" data-price="38400" data-name="Корона" data-stock="in">
+        <article class="card" data-id="korona" data-type="chandelier" data-price="38400" data-name="Корона" data-stock="in" data-colors="gold black chrome">
           <div class="card-media">
-            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <button class="fav" type="button" data-fav aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
             <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
           </div>
           <div class="card-body">
             <p class="card-type">Люстра</p><h3 class="card-name">Корона</h3>
             <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span><span class="swatch sw-chrome"></span></div>
-            <p class="price"><b>38 400 ₽</b></p>
+            <p class="price"><b>38 400 ₽</b></p>
+            <button class="add-cart" type="button" data-add aria-label="Добавить «Корона» в корзину">В корзину</button>
           </div>
         </article>
-
       </section>
-
-      <div class="more-wrap">
-        <button class="btn-more" type="button">Показать ещё</button>
-      </div>
+      <p class="grid-empty" data-empty hidden>Ничего не найдено. Попробуйте изменить фильтры.</p>
+      <div class="more-wrap"><button class="btn-more" type="button">Показать ещё</button></div>
     </div>
-
     <section class="newsletter">
       <div class="container newsletter-inner">
         <div>
@@ -676,159 +760,426 @@ button { font-family: inherit; cursor: pointer; }
             <a href="mailto:shop@mebel-i-svet.ru" aria-label="Почта"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
           </div>
         </div>
-        <div class="footer-col">
-          <h3>Каталог</h3>
-          <ul>
-            <li><a href="/lyustry/">Люстры</a></li>
-            <li><a href="/podvesy/">Подвесы</a></li>
-            <li><a href="/nastolnye/">Настольные лампы</a></li>
-            <li><a href="/torshery/">Торшеры</a></li>
-            <li><a href="/bra/">Бра</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Покупателям</h3>
-          <ul>
-            <li><a href="/dostavka/">Доставка</a></li>
-            <li><a href="/oplata/">Оплата</a></li>
-            <li><a href="/vozvrat/">Возврат</a></li>
-            <li><a href="/garantiya/">Гарантия</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Контакты</h3>
-          <ul>
-            <li>г. Москва, ул. Светотехническая, 14</li>
-            <li><a href="tel:+74951204567">+7 (495) 120-45-67</a></li>
-            <li><a href="mailto:shop@mebel-i-svet.ru">shop@mebel-i-svet.ru</a></li>
-            <li>Ежедневно 10:00–21:00</li>
-          </ul>
-        </div>
+        <div class="footer-col"><h3>Каталог</h3><ul><li><a href="/lyustry/">Люстры</a></li><li><a href="/podvesy/">Подвесы</a></li><li><a href="/nastolnye/">Настольные лампы</a></li><li><a href="/torshery/">Торшеры</a></li><li><a href="/bra/">Бра</a></li></ul></div>
+        <div class="footer-col"><h3>Покупателям</h3><ul><li><a href="/dostavka/">Доставка</a></li><li><a href="/oplata/">Оплата</a></li><li><a href="/vozvrat/">Возврат</a></li><li><a href="/garantiya/">Гарантия</a></li></ul></div>
+        <div class="footer-col"><h3>Контакты</h3><ul><li>г. Москва, ул. Светотехническая, 14</li><li><a href="tel:+74951204567">+7 (495) 120-45-67</a></li><li><a href="mailto:shop@mebel-i-svet.ru">shop@mebel-i-svet.ru</a></li><li>Ежедневно 10:00–21:00</li></ul></div>
       </div>
     </div>
     <div class="footer-bottom">© 2026 «Мебель и свет» · Розничная продажа света и мебели</div>
   </footer>
+  <div class="backdrop" data-backdrop hidden></div>
+
+  <aside class="drawer" id="cart-drawer" data-drawer="cart" aria-label="Корзина" aria-hidden="true">
+    <div class="drawer-head"><h2>Корзина</h2><button class="icon-btn drawer-close" type="button" data-close aria-label="Закрыть"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="drawer-body" data-cart-list></div>
+    <p class="drawer-empty" data-cart-empty>Корзина пуста</p>
+    <div class="drawer-foot">
+      <div class="drawer-total"><span>Итого</span><b data-cart-total>0 ₽</b></div>
+      <button class="btn-primary" type="button" data-checkout>Оформить заказ</button>
+      <p class="drawer-note" data-cart-note role="status" aria-live="polite"></p>
+    </div>
+  </aside>
+
+  <aside class="drawer" id="fav-drawer" data-drawer="fav" aria-label="Избранное" aria-hidden="true">
+    <div class="drawer-head"><h2>Избранное</h2><button class="icon-btn drawer-close" type="button" data-close aria-label="Закрыть"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="drawer-body" data-fav-list></div>
+    <p class="drawer-empty" data-fav-empty>В избранном пусто</p>
+  </aside>
+
+  <div class="modal" id="account-modal" data-modal aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Личный кабинет">
+      <button class="icon-btn modal-close" type="button" data-close aria-label="Закрыть"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="tabs"><button class="tab is-on" type="button" data-tab="login">Вход</button><button class="tab" type="button" data-tab="register">Регистрация</button></div>
+      <form class="auth-form" data-form="login" novalidate>
+        <input type="email" placeholder="E-mail" aria-label="E-mail" autocomplete="email">
+        <input type="password" placeholder="Пароль" aria-label="Пароль" autocomplete="current-password">
+        <button class="btn-primary" type="submit">Войти</button>
+      </form>
+      <form class="auth-form is-hidden" data-form="register" novalidate>
+        <input type="email" placeholder="E-mail" aria-label="E-mail" autocomplete="email">
+        <button class="btn-primary" type="submit">Зарегистрироваться</button>
+        <p class="auth-hint">Логин и пароль придут на почту — потом сможете сменить их в кабинете.</p>
+      </form>
+      <p class="auth-note" data-auth-note role="status" aria-live="polite"></p>
+    </div>
+  </div>
 
   <script>
-/* «Мебель и свет» — каталог. Все обработчики через addEventListener. */
+/* «Мебель и свет» — каталог: фильтры, поиск, корзина, избранное, кабинет.
+   Все обработчики через addEventListener, без инлайнов.
+   localStorage обёрнут в try/catch — работает на сайте, не ломает превью. */
 (function () {
   "use strict";
   document.documentElement.classList.add("js");
 
+  var qs = function (s, r) { return (r || document).querySelector(s); };
+  var qsa = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0"); }
+  function store(key, val) {
+    try {
+      if (val === undefined) { var v = localStorage.getItem(key); return v ? JSON.parse(v) : null; }
+      localStorage.setItem(key, JSON.stringify(val));
+    } catch (e) { return null; }
+  }
+
+  var grid, cards;
+  var cart = {}, favs = {};
+  var filters = { types: [], colors: [], price: "any", stock: false, search: "" };
+
   document.addEventListener("DOMContentLoaded", function () {
+    grid = qs("[data-grid]");
+    if (!grid) return;
+    cards = qsa(".card", grid);
     initNav();
-    initCatalog();
+    initSearch();
+    initFilters();
+    initSort();
     initFavorites();
+    initCart();
+    initOverlays();
+    initAccount();
     initNewsletter();
     initMore();
+    restore();
+    applyFilters();
   });
 
+  /* ---------- card helpers ---------- */
+  function cardById(id) { return grid.querySelector('.card[data-id="' + id + '"]'); }
+  function cardInfo(card) {
+    var use = card.querySelector(".fixture use");
+    return {
+      id: card.getAttribute("data-id"),
+      name: card.querySelector(".card-name").textContent,
+      type: card.querySelector(".card-type").textContent,
+      fx: (use ? use.getAttribute("href") || "" : "").replace("#f-", ""),
+      price: parseInt(card.getAttribute("data-price"), 10) || 0
+    };
+  }
+  function thumb(info) {
+    return '<div class="line-thumb"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-' + info.fx + '"/></svg></div>';
+  }
+
+  /* ---------- nav ---------- */
   function initNav() {
-    var toggle = document.querySelector(".nav-toggle");
-    var nav = document.querySelector(".main-nav");
+    var toggle = qs(".nav-toggle"), nav = qs(".main-nav");
     if (!toggle || !nav) return;
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
     nav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        nav.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      }
+      if (e.target.tagName === "A") { nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); }
     });
   }
 
-  function initCatalog() {
-    var grid = document.querySelector("[data-grid]");
-    if (!grid) return;
-    var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
-    var original = cards.slice();
-    var countEl = document.querySelector("[data-count]");
-    var stockOnly = false;
+  /* ---------- search ---------- */
+  function initSearch() {
+    var bar = qs("[data-search-bar]"), input = qs("[data-search-input]");
+    var open = qs("[data-search-open]"), close = qs("[data-search-close]");
+    if (!bar) return;
+    if (open) open.addEventListener("click", function () { bar.hidden = false; if (input) input.focus(); });
+    function hide() { bar.hidden = true; if (input) input.value = ""; filters.search = ""; applyFilters(); }
+    if (close) close.addEventListener("click", hide);
+    if (input) {
+      input.addEventListener("input", function () { filters.search = input.value.trim().toLowerCase(); applyFilters(); });
+      input.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(); });
+    }
+  }
 
-    function applyStock() {
-      cards.forEach(function (c) {
-        var hide = stockOnly && c.getAttribute("data-stock") !== "in";
-        c.classList.toggle("is-hidden", hide);
+  /* ---------- filters ---------- */
+  function initFilters() {
+    qsa(".filter-group").forEach(function (g) {
+      var btn = g.querySelector(".chip");
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = g.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        qsa(".filter-group").forEach(function (o) {
+          if (o !== g) { o.classList.remove("open"); o.querySelector(".chip").setAttribute("aria-expanded", "false"); }
+        });
       });
-    }
-    function updateCount() {
-      if (!countEl) return;
-      var visible = cards.filter(function (c) { return !c.classList.contains("is-hidden"); }).length;
-      countEl.textContent = String(visible);
-    }
-    function sortBy(mode) {
+      var pop = g.querySelector(".filter-pop");
+      if (pop) pop.addEventListener("click", function (e) { e.stopPropagation(); });
+    });
+    document.addEventListener("click", function () {
+      qsa(".filter-group.open").forEach(function (g) { g.classList.remove("open"); g.querySelector(".chip").setAttribute("aria-expanded", "false"); });
+    });
+
+    qsa("[data-f-type], [data-f-color], [data-f-price]").forEach(function (i) { i.addEventListener("change", readFilters); });
+
+    var stockChip = qs('.chip[data-filter="stock"]');
+    if (stockChip) stockChip.addEventListener("click", function () {
+      filters.stock = !filters.stock; stockChip.classList.toggle("is-on", filters.stock); applyFilters();
+    });
+
+    var reset = qs("[data-reset]");
+    if (reset) reset.addEventListener("click", resetFilters);
+  }
+
+  function readFilters() {
+    filters.types = qsa("[data-f-type]:checked").map(function (i) { return i.value; });
+    filters.colors = qsa("[data-f-color]:checked").map(function (i) { return i.value; });
+    var pr = qs("[data-f-price]:checked");
+    filters.price = pr ? pr.value : "any";
+    applyFilters();
+  }
+
+  function priceOk(p) {
+    if (filters.price === "lt10") return p < 10000;
+    if (filters.price === "10-30") return p >= 10000 && p <= 30000;
+    if (filters.price === "gt30") return p > 30000;
+    return true;
+  }
+
+  function applyFilters() {
+    var visible = 0;
+    cards.forEach(function (c) {
+      var ok = true;
+      if (filters.stock && c.getAttribute("data-stock") !== "in") ok = false;
+      if (ok && filters.types.length && filters.types.indexOf(c.getAttribute("data-type")) < 0) ok = false;
+      if (ok && filters.colors.length) {
+        var cc = (c.getAttribute("data-colors") || "").split(" ");
+        if (!filters.colors.some(function (col) { return cc.indexOf(col) >= 0; })) ok = false;
+      }
+      if (ok && !priceOk(parseInt(c.getAttribute("data-price"), 10) || 0)) ok = false;
+      if (ok && filters.search && c.querySelector(".card-name").textContent.toLowerCase().indexOf(filters.search) < 0) ok = false;
+      c.classList.toggle("is-hidden", !ok);
+      if (ok) visible++;
+    });
+    var cnt = qs("[data-count]"); if (cnt) cnt.textContent = String(visible);
+    var empty = qs("[data-empty]"); if (empty) empty.hidden = visible !== 0;
+
+    setChip("type", filters.types.length > 0);
+    setChip("color", filters.colors.length > 0);
+    setChip("price", filters.price !== "any");
+    var active = filters.stock || filters.types.length || filters.colors.length || filters.price !== "any" || filters.search;
+    var reset = qs("[data-reset]"); if (reset) reset.hidden = !active;
+  }
+
+  function setChip(group, on) {
+    var g = qs('.filter-group[data-group="' + group + '"]');
+    if (g) g.querySelector(".chip").classList.toggle("is-on", on);
+  }
+
+  function resetFilters() {
+    filters = { types: [], colors: [], price: "any", stock: false, search: "" };
+    qsa("[data-f-type], [data-f-color]").forEach(function (i) { i.checked = false; });
+    var anyP = qs('[data-f-price][value="any"]'); if (anyP) anyP.checked = true;
+    var stockChip = qs('.chip[data-filter="stock"]'); if (stockChip) stockChip.classList.remove("is-on");
+    var si = qs("[data-search-input]"); if (si) si.value = "";
+    applyFilters();
+  }
+
+  /* ---------- sort ---------- */
+  function initSort() {
+    var sel = qs("[data-sort]"); if (!sel) return;
+    var original = cards.slice();
+    function price(c) { return parseInt(c.getAttribute("data-price"), 10) || 0; }
+    sel.addEventListener("change", function () {
       var arr = original.slice();
-      if (mode === "cheap") arr.sort(function (a, b) { return num(a) - num(b); });
-      else if (mode === "exp") arr.sort(function (a, b) { return num(b) - num(a); });
-      else if (mode === "name") arr.sort(function (a, b) {
-        return a.getAttribute("data-name").localeCompare(b.getAttribute("data-name"), "ru");
+      if (sel.value === "cheap") arr.sort(function (a, b) { return price(a) - price(b); });
+      else if (sel.value === "exp") arr.sort(function (a, b) { return price(b) - price(a); });
+      else if (sel.value === "name") arr.sort(function (a, b) {
+        return a.querySelector(".card-name").textContent.localeCompare(b.querySelector(".card-name").textContent, "ru");
       });
       arr.forEach(function (c) { grid.appendChild(c); });
-    }
-    function num(c) { return parseInt(c.getAttribute("data-price"), 10) || 0; }
-
-    var stockChip = document.querySelector('.chip[data-filter="stock"]');
-    if (stockChip) {
-      stockChip.addEventListener("click", function () {
-        stockOnly = !stockOnly;
-        stockChip.classList.toggle("is-on", stockOnly);
-        applyStock();
-        updateCount();
-      });
-    }
-    // other chips: visual toggle only (demo)
-    document.querySelectorAll(".chip:not([data-filter])").forEach(function (chip) {
-      if (chip.textContent.trim() === "Фильтры") return;
-      chip.addEventListener("click", function () { chip.classList.toggle("is-on"); });
     });
-
-    var sortSel = document.querySelector("[data-sort]");
-    if (sortSel) sortSel.addEventListener("change", function () { sortBy(sortSel.value); });
-
-    updateCount();
   }
 
+  /* ---------- favorites ---------- */
   function initFavorites() {
-    var counter = document.querySelector("[data-fav-count]");
-    var count = 0;
-    document.querySelectorAll(".fav").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var on = btn.classList.toggle("is-on");
-        count += on ? 1 : -1;
-        if (count < 0) count = 0;
-        if (counter) counter.textContent = String(count);
+    cards.forEach(function (c) {
+      var btn = c.querySelector("[data-fav]");
+      if (btn) btn.addEventListener("click", function () { toggleFav(c.getAttribute("data-id")); });
+    });
+    var list = qs("[data-fav-list]");
+    if (list) list.addEventListener("click", function (e) {
+      var add = e.target.closest("[data-fav-add]"), rm = e.target.closest("[data-fav-rm]");
+      if (add) addToCart(add.getAttribute("data-fav-add"));
+      if (rm) toggleFav(rm.getAttribute("data-fav-rm"));
+    });
+  }
+  function toggleFav(id) {
+    if (favs[id]) delete favs[id]; else favs[id] = true;
+    syncFavUI(); store("mis_favs", Object.keys(favs));
+  }
+  function syncFavUI() {
+    cards.forEach(function (c) {
+      var btn = c.querySelector("[data-fav]");
+      if (btn) btn.classList.toggle("is-on", !!favs[c.getAttribute("data-id")]);
+    });
+    var n = Object.keys(favs).length;
+    qsa("[data-fav-count]").forEach(function (e) { e.textContent = String(n); });
+    renderFavDrawer();
+  }
+  function renderFavDrawer() {
+    var list = qs("[data-fav-list]"), empty = qs("[data-fav-empty]");
+    if (!list) return;
+    list.innerHTML = "";
+    var ids = Object.keys(favs);
+    if (empty) empty.hidden = ids.length > 0;
+    ids.forEach(function (id) {
+      var c = cardById(id); if (!c) return;
+      var info = cardInfo(c);
+      var row = document.createElement("div"); row.className = "line-item";
+      row.innerHTML = thumb(info) +
+        '<div class="line-info"><p class="line-type">' + info.type + '</p><p class="line-name">' + info.name + '</p>' +
+        '<p class="line-price">' + fmt(info.price) + '\u00a0\u20bd</p>' +
+        '<div class="line-actions"><button class="line-add" type="button" data-fav-add="' + id + '">В корзину</button>' +
+        '<button class="line-remove" type="button" data-fav-rm="' + id + '">Убрать</button></div></div>';
+      list.appendChild(row);
+    });
+  }
+
+  /* ---------- cart ---------- */
+  function initCart() {
+    cards.forEach(function (c) {
+      var add = c.querySelector("[data-add]");
+      if (add) add.addEventListener("click", function () { addToCart(c.getAttribute("data-id")); openDrawer("cart"); });
+    });
+    var list = qs("[data-cart-list]");
+    if (list) list.addEventListener("click", function (e) {
+      var inc = e.target.closest("[data-inc]"), dec = e.target.closest("[data-dec]"), rm = e.target.closest("[data-rm]");
+      if (inc) changeQty(inc.getAttribute("data-inc"), 1);
+      if (dec) changeQty(dec.getAttribute("data-dec"), -1);
+      if (rm) { delete cart[rm.getAttribute("data-rm")]; syncCart(); }
+    });
+    var checkout = qs("[data-checkout]");
+    if (checkout) checkout.addEventListener("click", function () {
+      var note = qs("[data-cart-note]");
+      if (Object.keys(cart).length === 0) { if (note) note.textContent = "Корзина пуста."; return; }
+      if (note) note.textContent = "Заказ оформлен — это демонстрация. Спасибо!";
+      cart = {}; syncCart();
+    });
+  }
+  function addToCart(id) {
+    var c = cardById(id); if (!c) return;
+    var info = cardInfo(c);
+    if (cart[id]) cart[id].qty++;
+    else cart[id] = { id: id, name: info.name, type: info.type, fx: info.fx, price: info.price, qty: 1 };
+    syncCart();
+  }
+  function changeQty(id, d) {
+    if (!cart[id]) return;
+    cart[id].qty += d;
+    if (cart[id].qty <= 0) delete cart[id];
+    syncCart();
+  }
+  function syncCart() {
+    var list = qs("[data-cart-list]"), empty = qs("[data-cart-empty]"), totalEl = qs("[data-cart-total]");
+    var ids = Object.keys(cart), total = 0, n = 0;
+    if (list) list.innerHTML = "";
+    ids.forEach(function (id) {
+      var it = cart[id]; total += it.price * it.qty; n += it.qty;
+      if (!list) return;
+      var row = document.createElement("div"); row.className = "line-item";
+      row.innerHTML = thumb(it) +
+        '<div class="line-info"><p class="line-type">' + it.type + '</p><p class="line-name">' + it.name + '</p>' +
+        '<p class="line-price">' + fmt(it.price) + '\u00a0\u20bd</p>' +
+        '<div class="line-actions"><span class="qty">' +
+        '<button type="button" data-dec="' + id + '" aria-label="Меньше">\u2212</button>' +
+        '<span>' + it.qty + '</span>' +
+        '<button type="button" data-inc="' + id + '" aria-label="Больше">+</button></span>' +
+        '<button class="line-remove" type="button" data-rm="' + id + '">Убрать</button></div></div>';
+      list.appendChild(row);
+    });
+    if (empty) empty.hidden = ids.length > 0;
+    if (totalEl) totalEl.textContent = fmt(total) + "\u00a0\u20bd";
+    qsa("[data-cart-count]").forEach(function (e) { e.textContent = String(n); });
+    store("mis_cart", cart);
+  }
+
+  /* ---------- overlays (drawers / backdrop) ---------- */
+  function initOverlays() {
+    var cartOpen = qs("[data-cart-open]"), favOpen = qs("[data-fav-open]"), bk = qs("[data-backdrop]");
+    if (cartOpen) cartOpen.addEventListener("click", function () { openDrawer("cart"); });
+    if (favOpen) favOpen.addEventListener("click", function () { openDrawer("fav"); });
+    if (bk) bk.addEventListener("click", function () { closeAll(); });
+    qsa("[data-close]").forEach(function (b) { b.addEventListener("click", function () { closeAll(); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeAll(); });
+  }
+  function openDrawer(name) {
+    closeAll(true);
+    var d = qs('[data-drawer="' + name + '"]'); if (!d) return;
+    if (name === "cart") syncCart(); else if (name === "fav") renderFavDrawer();
+    d.classList.add("open"); d.setAttribute("aria-hidden", "false");
+    var bk = qs("[data-backdrop]");
+    if (bk) { bk.hidden = false; requestAnimationFrame(function () { bk.classList.add("show"); }); }
+    document.body.classList.add("no-scroll");
+  }
+  function openModal() {
+    closeAll(true);
+    var m = qs("[data-modal]"); if (!m) return;
+    m.classList.add("open"); m.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
+  function closeAll(keepScroll) {
+    qsa(".drawer.open").forEach(function (d) { d.classList.remove("open"); d.setAttribute("aria-hidden", "true"); });
+    var m = qs("[data-modal]"); if (m) { m.classList.remove("open"); m.setAttribute("aria-hidden", "true"); }
+    var bk = qs("[data-backdrop]");
+    if (bk) { bk.classList.remove("show"); setTimeout(function () { bk.hidden = true; }, 300); }
+    if (!keepScroll) document.body.classList.remove("no-scroll");
+  }
+
+  /* ---------- account modal ---------- */
+  function initAccount() {
+    var openBtn = qs("[data-account-open]");
+    if (openBtn) openBtn.addEventListener("click", openModal);
+    var modal = qs("[data-modal]");
+    if (modal) modal.addEventListener("click", function (e) { if (e.target === modal) closeAll(); });
+    qsa(".tab").forEach(function (t) {
+      t.addEventListener("click", function () {
+        qsa(".tab").forEach(function (x) { x.classList.toggle("is-on", x === t); });
+        var which = t.getAttribute("data-tab");
+        qsa(".auth-form").forEach(function (f) { f.classList.toggle("is-hidden", f.getAttribute("data-form") !== which); });
+        var note = qs("[data-auth-note]"); if (note) note.textContent = "";
+      });
+    });
+    qsa(".auth-form").forEach(function (f) {
+      f.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var note = qs("[data-auth-note]");
+        var email = f.querySelector('input[type="email"]');
+        var val = email ? email.value.trim() : "";
+        if (!val || val.indexOf("@") < 1) { if (note) note.textContent = "Введите корректный e-mail."; return; }
+        if (note) note.textContent = f.getAttribute("data-form") === "login"
+          ? "Вход выполнен (демо)."
+          : "Готово — логин и пароль отправлены на почту (демо).";
       });
     });
   }
 
+  /* ---------- newsletter ---------- */
   function initNewsletter() {
-    var form = document.querySelector(".news-form");
-    var note = document.querySelector(".news-note");
+    var form = qs(".news-form"), note = qs(".news-note");
     if (!form) return;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var input = form.querySelector("input");
       var value = input ? input.value.trim() : "";
       if (!note) return;
-      if (value && value.indexOf("@") > 0) {
-        note.textContent = "Готово — проверьте почту.";
-        if (input) input.value = "";
-      } else {
-        note.textContent = "Введите корректный e-mail.";
-      }
+      if (value && value.indexOf("@") > 0) { note.textContent = "Готово — проверьте почту."; if (input) input.value = ""; }
+      else { note.textContent = "Введите корректный e-mail."; }
     });
   }
 
+  /* ---------- load more ---------- */
   function initMore() {
-    var btn = document.querySelector(".btn-more");
-    if (!btn) return;
+    var btn = qs(".btn-more"); if (!btn) return;
     btn.addEventListener("click", function () {
       btn.textContent = "Показаны все товары категории";
       btn.disabled = true;
       btn.classList.add("is-done");
     });
+  }
+
+  /* ---------- restore from storage ---------- */
+  function restore() {
+    var sc = store("mis_cart"); if (sc && typeof sc === "object") cart = sc;
+    var sf = store("mis_favs"); if (sf && sf.length) sf.forEach(function (id) { favs[id] = true; });
+    syncCart();
+    syncFavUI();
   }
 })();
 
