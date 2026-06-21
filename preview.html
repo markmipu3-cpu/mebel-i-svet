@@ -597,6 +597,93 @@ a { color: inherit; text-decoration: none; }
   .js .reveal { opacity: 1; transform: none; }
 }
 
+
+/* ============================================================
+   Hero chandelier (SVG) — glows through navy, near the headline
+   ============================================================ */
+.hero-inner { max-width: var(--maxw); z-index: 2; }
+.hero-content { max-width: 560px; margin-inline: auto; }
+
+.hero-chandelier {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: clamp(50px, 11vw, 180px);
+  display: flex;
+  align-items: flex-start;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-chandelier .chandelier {
+  height: clamp(290px, 56vh, 430px);
+  width: auto; display: block; overflow: visible;
+}
+.chandelier { color: var(--gold); }
+.chandelier .ch-line { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.chandelier .ch-strand { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0.5 4.2; opacity: 0.85; }
+.chandelier .ch-drop { fill: rgba(226,198,129,0.22); stroke: currentColor; stroke-width: 0.9; }
+.chandelier .ch-spark1, .chandelier .ch-spark2, .chandelier .ch-spark3 { fill: #FFE9B0; }
+.chandelier .ch-spark1 { animation: ch-twinkle 4s ease-in-out infinite; }
+.chandelier .ch-spark2 { animation: ch-twinkle 4s ease-in-out infinite 1.3s; }
+.chandelier .ch-spark3 { animation: ch-twinkle 4s ease-in-out infinite 2.6s; }
+@keyframes ch-twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+@media (min-width: 761px) {
+  .hero-inner { padding-left: clamp(300px, 26vw, 332px); }
+}
+@media (max-width: 1024px) and (min-width: 761px) {
+  .hero-chandelier { left: clamp(30px, 6vw, 80px); }
+  .hero-chandelier .chandelier { height: 330px; }
+  .hero-inner { padding-left: clamp(255px, 30vw, 296px); }
+}
+
+/* ============================================================
+   Spotlights: 1 top, 2 bottom — cones expand onto cards on hover
+   ============================================================ */
+.stage { position: relative; }
+.spotlight { position: absolute; color: var(--gold); pointer-events: none; z-index: 3; line-height: 0; }
+.spot-svg { width: 42px; height: auto; display: block; overflow: visible; }
+.spot-stroke { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.spot-lens { fill: var(--gold-bright); stroke: none; }
+.spotlight::after {
+  content: ""; position: absolute; left: 50%; top: 70%;
+  width: 56px; height: 120px; transform: translateX(-50%);
+  background: radial-gradient(ellipse 50% 50% at 50% 0%, rgba(226,198,129,0.12), rgba(226,198,129,0) 72%);
+  pointer-events: none;
+}
+.spotlight--t  { top: -46px; left: 50%; transform: translateX(-50%); }
+.spotlight--bl { bottom: -48px; left: 26%; transform: rotate(180deg); }
+.spotlight--br { bottom: -48px; right: 26%; transform: rotate(180deg); }
+
+/* a card lit by the spotlight on hover: descending cone + sparkling, shimmering edge */
+.prod-card { position: relative; }
+.prod-card::before {
+  content: ""; position: absolute; left: 50%; top: -4%;
+  width: 130%; height: 78%;
+  transform: translateX(-50%) scaleY(0.5); transform-origin: top center;
+  background: linear-gradient(to bottom, rgba(255,233,176,0.55), rgba(255,233,176,0.06) 68%, rgba(255,233,176,0));
+  clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+  opacity: 0; pointer-events: none; z-index: 2;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+.prod-card:hover::before { opacity: 1; transform: translateX(-50%) scaleY(1); }
+.prod-card::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; z-index: 4; opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.prod-card:hover::after { opacity: 1; animation: card-sparkle 1.8s ease-in-out infinite; }
+@keyframes card-sparkle {
+  0%, 100% { box-shadow: inset 0 0 0 1px rgba(226,198,129,0.7), 0 0 16px rgba(226,198,129,0.28); }
+  50%      { box-shadow: inset 0 0 0 1px rgba(255,233,176,0.95), 0 0 26px rgba(255,233,176,0.45); }
+}
+.prod-card:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -24px rgba(0,0,0,0.55); }
+
+@media (max-width: 900px) { .hero-chandelier .chandelier { height: 300px; } }
+@media (max-width: 760px) {
+  .spotlight { display: none; }
+  .hero-chandelier { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -636,13 +723,16 @@ a { color: inherit; text-decoration: none; }
 
     <!-- Экран 1 — Hero -->
     <section class="hero">
+      <div class="hero-chandelier" aria-hidden="true"><svg class="chandelier" viewBox="0 0 260 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><defs><radialGradient id="chGlow" cx="50%" cy="50%" r="62%"><stop offset="0%" stop-color="#E2C681" stop-opacity="0.5"/><stop offset="44%" stop-color="#C9A24C" stop-opacity="0.14"/><stop offset="100%" stop-color="#C9A24C" stop-opacity="0"/></radialGradient><radialGradient id="chInner" cx="50%" cy="56%" r="55%"><stop offset="0%" stop-color="#FFE9B0" stop-opacity="0.42"/><stop offset="55%" stop-color="#E2C681" stop-opacity="0.12"/><stop offset="100%" stop-color="#E2C681" stop-opacity="0"/></radialGradient></defs><ellipse cx="130" cy="210" rx="150" ry="200" fill="url(#chGlow)"/><ellipse class="ch-line" cx="130" cy="6" rx="18" ry="4"/><ellipse class="ch-line" cx="130" cy="11" rx="13.5" ry="3.3"/><ellipse class="ch-line" cx="130" cy="16" rx="9.5" ry="2.8"/><line class="ch-line" x1="130" y1="19" x2="130" y2="30"/><ellipse class="ch-line" cx="130" cy="34" rx="13" ry="4"/><ellipse class="ch-line ch-ring" cx="130" cy="208" rx="118" ry="22"/><ellipse class="ch-line ch-ring" cx="130" cy="208" rx="113" ry="19.6"/><path class="ch-strand" d="M 142.0 34.0 Q 264.5 109.0 248.0 208.0"/><path class="ch-strand" d="M 141.3 35.4 Q 256.4 109.0 240.9 215.5"/><path class="ch-strand" d="M 139.2 36.6 Q 233.0 109.0 220.4 222.1"/><path class="ch-strand" d="M 136.0 37.5 Q 197.3 109.0 189.0 227.1"/><path class="ch-strand" d="M 132.1 37.9 Q 153.4 109.0 150.5 229.7"/><path class="ch-strand" d="M 127.9 37.9 Q 106.6 109.0 109.5 229.7"/><path class="ch-strand" d="M 124.0 37.5 Q 62.7 109.0 71.0 227.1"/><path class="ch-strand" d="M 120.8 36.6 Q 27.0 109.0 39.6 222.1"/><path class="ch-strand" d="M 118.7 35.4 Q 3.6 109.0 19.1 215.5"/><path class="ch-strand" d="M 118.0 34.0 Q -4.5 109.0 12.0 208.0"/><path class="ch-strand" d="M 118.7 32.6 Q 3.6 109.0 19.1 200.5"/><path class="ch-strand" d="M 120.8 31.4 Q 27.0 109.0 39.6 193.9"/><path class="ch-strand" d="M 124.0 30.5 Q 62.7 109.0 71.0 188.9"/><path class="ch-strand" d="M 127.9 30.1 Q 106.6 109.0 109.5 186.3"/><path class="ch-strand" d="M 132.1 30.1 Q 153.4 109.0 150.5 186.3"/><path class="ch-strand" d="M 136.0 30.5 Q 197.3 109.0 189.0 188.9"/><path class="ch-strand" d="M 139.2 31.4 Q 233.0 109.0 220.4 193.9"/><path class="ch-strand" d="M 141.3 32.6 Q 256.4 109.0 240.9 200.5"/><ellipse cx="130" cy="238" rx="94" ry="120" fill="url(#chInner)"/><path class="ch-strand" d="M 248.0 208.0 Q 250.4 292.0 140.0 360.0"/><path class="ch-strand" d="M 240.9 215.5 Q 243.1 292.0 139.4 361.0"/><path class="ch-strand" d="M 220.4 222.1 Q 222.2 292.0 137.7 361.9"/><path class="ch-strand" d="M 189.0 227.1 Q 190.2 292.0 135.0 362.6"/><path class="ch-strand" d="M 150.5 229.7 Q 150.9 292.0 131.7 363.0"/><path class="ch-strand" d="M 109.5 229.7 Q 109.1 292.0 128.3 363.0"/><path class="ch-strand" d="M 71.0 227.1 Q 69.8 292.0 125.0 362.6"/><path class="ch-strand" d="M 39.6 222.1 Q 37.8 292.0 122.3 361.9"/><path class="ch-strand" d="M 19.1 215.5 Q 16.9 292.0 120.6 361.0"/><path class="ch-strand" d="M 12.0 208.0 Q 9.6 292.0 120.0 360.0"/><path class="ch-strand" d="M 19.1 200.5 Q 16.9 292.0 120.6 359.0"/><path class="ch-strand" d="M 39.6 193.9 Q 37.8 292.0 122.3 358.1"/><path class="ch-strand" d="M 71.0 188.9 Q 69.8 292.0 125.0 357.4"/><path class="ch-strand" d="M 109.5 186.3 Q 109.1 292.0 128.3 357.0"/><path class="ch-strand" d="M 150.5 186.3 Q 150.9 292.0 131.7 357.0"/><path class="ch-strand" d="M 189.0 188.9 Q 190.2 292.0 135.0 357.4"/><path class="ch-strand" d="M 220.4 193.9 Q 222.2 292.0 137.7 358.1"/><path class="ch-strand" d="M 240.9 200.5 Q 243.1 292.0 139.4 359.0"/><path class="ch-drop" d="M 240.8837292527372 217.52444315316473 C 237.9 222.6 237.9 229.8 240.8837292527372 232.52444315316473 C 243.9 229.8 243.9 222.6 240.8837292527372 217.52444315316473 Z"/><path class="ch-drop" d="M 220.3932442880394 224.14132741310385 C 217.4 229.2 217.4 236.4 220.3932442880394 239.14132741310385 C 223.4 236.4 223.4 229.2 220.3932442880394 224.14132741310385 Z"/><path class="ch-drop" d="M 189.0 229.05255888325766 C 186.0 234.2 186.0 241.4 189.0 244.05255888325766 C 192.0 241.4 192.0 234.2 189.0 229.05255888325766 Z"/><path class="ch-drop" d="M 150.4904849646978 231.66577056626858 C 147.5 236.8 147.5 244.0 150.4904849646978 246.66577056626858 C 153.5 244.0 153.5 236.8 150.4904849646978 231.66577056626858 Z"/><path class="ch-drop" d="M 109.50951503530223 231.66577056626858 C 106.5 236.8 106.5 244.0 109.50951503530223 246.66577056626858 C 112.5 244.0 112.5 236.8 109.50951503530223 231.66577056626858 Z"/><path class="ch-drop" d="M 71.00000000000003 229.05255888325766 C 68.0 234.2 68.0 241.4 71.00000000000003 244.05255888325766 C 74.0 241.4 74.0 234.2 71.00000000000003 229.05255888325766 Z"/><path class="ch-drop" d="M 39.6067557119606 224.14132741310388 C 36.6 229.2 36.6 236.4 39.6067557119606 239.14132741310388 C 42.6 236.4 42.6 229.2 39.6067557119606 224.14132741310388 Z"/><path class="ch-drop" d="M 19.116270747262817 217.52444315316473 C 16.1 222.6 16.1 229.8 19.116270747262817 232.52444315316473 C 22.1 229.8 22.1 222.6 19.116270747262817 217.52444315316473 Z"/><ellipse class="ch-line" cx="130" cy="360" rx="10" ry="3"/><ellipse class="ch-drop" cx="130" cy="370" rx="3.2" ry="5.5"/><path class="ch-drop" d="M 130 378 C 124.0 386.8 124.0 399.3 130 404 C 136.0 399.3 136.0 386.8 130 378 Z"/><path class="ch-spark1" d="M 72 147.60855051165015 L 72.7 149.3 L 74.39144948834985 150 L 72.7 150.7 L 72 152.39144948834985 L 71.3 150.7 L 69.60855051165015 150 L 71.3 149.3 Z"/><path class="ch-spark2" d="M 100 117.76423574346795 L 100.6 119.4 L 102.23576425653205 120 L 100.6 120.6 L 100 122.23576425653205 L 99.4 120.6 L 97.76423574346795 120 L 99.4 119.4 Z"/><path class="ch-spark3" d="M 150 127.31415897426413 L 150.8 129.2 L 152.68584102573587 130 L 150.8 130.8 L 150 132.68584102573587 L 149.2 130.8 L 147.31415897426413 130 L 149.2 129.2 Z"/><path class="ch-spark1" d="M 186 153.8348073419992 L 186.6 155.4 L 188.1651926580008 156 L 186.6 156.6 L 186 158.1651926580008 L 185.4 156.6 L 183.8348073419992 156 L 185.4 155.4 Z"/><path class="ch-spark2" d="M 60 202.417706196124 L 60.7 204.3 L 62.58229380387602 205 L 60.7 205.7 L 60 207.582293803876 L 59.3 205.7 L 57.41770619612398 205 L 59.3 204.3 Z"/><path class="ch-spark3" d="M 200 202.57087997477868 L 200.7 204.3 L 202.42912002522132 205 L 200.7 205.7 L 200 207.42912002522132 L 199.3 205.7 L 197.57087997477868 205 L 199.3 204.3 Z"/><path class="ch-spark1" d="M 96 247.84780096770277 L 96.6 249.4 L 98.15219903229723 250 L 96.6 250.6 L 96 252.15219903229723 L 95.4 250.6 L 93.84780096770277 250 L 95.4 249.4 Z"/><path class="ch-spark2" d="M 165 252.44330784012953 L 165.7 254.3 L 167.55669215987047 255 L 165.7 255.7 L 165 257.55669215987047 L 164.3 255.7 L 162.44330784012953 255 L 164.3 254.3 Z"/><path class="ch-spark3" d="M 110 297.8662539074022 L 110.6 299.4 L 112.13374609259779 300 L 110.6 300.6 L 110 302.1337460925978 L 109.4 300.6 L 107.86625390740221 300 L 109.4 299.4 Z"/><path class="ch-spark1" d="M 150 302.50971888470383 L 150.7 304.3 L 152.49028111529614 305 L 150.7 305.7 L 150 307.49028111529617 L 149.3 305.7 L 147.50971888470386 305 L 149.3 304.3 Z"/><path class="ch-spark2" d="M 130 207.83713011878285 L 130.6 209.4 L 132.16286988121715 210 L 130.6 210.6 L 130 212.16286988121715 L 129.4 210.6 L 127.83713011878284 210 L 129.4 209.4 Z"/><path class="ch-spark3" d="M 130 342.8183582879905 L 130.6 344.4 L 132.18164171200948 345 L 130.6 345.6 L 130 347.1816417120095 L 129.4 345.6 L 127.81835828799052 345 L 129.4 344.4 Z"/><path class="ch-spark1" d="M 82 327.51793272977176 L 82.7 329.3 L 84.48206727022826 330 L 82.7 330.7 L 82 332.48206727022824 L 81.3 330.7 L 79.51793272977174 330 L 81.3 329.3 Z"/><path class="ch-spark2" d="M 178 327.15583308779514 L 178.8 329.2 L 180.84416691220483 330 L 178.8 330.8 L 178 332.84416691220486 L 177.2 330.8 L 175.15583308779517 330 L 177.2 329.2 Z"/></svg></div>
       <div class="container hero-inner">
-        <p class="eyebrow eyebrow--light reveal">Коллекция 2026</p>
-        <h1 class="reveal">Искусство света<br>в вашем доме</h1>
-        <p class="reveal">Люстры, лампы и мебель, собранные с вниманием к деталям — для дома, в котором хочется оставаться.</p>
-        <div class="hero-actions reveal">
-          <a class="btn btn-gold" href="/catalog/">Смотреть коллекцию</a>
-          <a class="btn btn-ghost" href="/designer/">Выбор дизайнера</a>
+        <div class="hero-content">
+          <p class="eyebrow eyebrow--light reveal">Коллекция 2026</p>
+          <h1 class="reveal">Искусство света<br>в вашем доме</h1>
+          <p class="reveal">Люстры, лампы и мебель, собранные с вниманием к деталям — для дома, в котором хочется оставаться.</p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-gold" href="/catalog/">Смотреть коллекцию</a>
+            <a class="btn btn-ghost" href="/designer/">Выбор дизайнера</a>
+          </div>
         </div>
       </div>
     </section>
@@ -712,6 +802,10 @@ a { color: inherit; text-decoration: none; }
           <h2 class="section-title section-title--light">Избранное этого сезона</h2>
         </div>
 
+        <div class="stage">
+        <span class="spotlight spotlight--t" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
+        <span class="spotlight spotlight--bl" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
+        <span class="spotlight spotlight--br" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
         <div class="prod-grid">
           <article class="prod-card reveal">
             <div class="prod-media">
@@ -763,6 +857,7 @@ a { color: inherit; text-decoration: none; }
               <button class="btn btn-gold prod-add" type="button">В корзину</button>
             </div>
           </article>
+        </div>
         </div>
       </div>
     </section>
