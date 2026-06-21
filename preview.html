@@ -3,70 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Мебель и свет — люстры, лампы и мебель для дома</title>
-  <meta name="description" content="Интернет-магазин «Мебель и свет»: люстры, лампы и мебель ручной работы. Доставка по Москве и России — авто, курьер, ж/д.">
+  <title>Освещение — люстры, лампы и светильники | Мебель и свет</title>
+  <meta name="description" content="Каталог освещения «Мебель и свет»: люстры, подвесы, настольные лампы, торшеры, бра и потолочные светильники. Доставка по России.">
   <meta name="theme-color" content="#15243F">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="Мебель и свет — люстры, лампы и мебель для дома">
-  <meta property="og:description" content="Люстры, лампы и мебель ручной работы. Доставка по Москве и России.">
+  <meta property="og:title" content="Освещение — Мебель и свет">
+  <meta property="og:description" content="Люстры, лампы, бра и потолочные светильники. Доставка по России.">
   <meta property="og:site_name" content="Мебель и свет">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2315243F'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23C9A24C'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
 /* ============================================================
-   «Мебель и свет» — макет главной страницы
-   Палитра, типографика и компоненты. Без инлайнов.
+   «Мебель и свет» — каталог освещения. Чистая сетка, фирменные цвета.
+   Без инлайнов.
    ============================================================ */
 
 :root {
-  --navy:        #15243F;
-  --navy-deep:   #0E1A30;
-  --gold:        #C9A24C;
-  --gold-bright: #E2C681;
-  --gold-ink:    #94731F;
-  --ivory:       #F5EFE3;
-  --ivory-card:  #FBF7EE;
-  --brown:       #2F241C;
-  --brown-soft:  #6E5D4D;
-  --emerald:     #1B5A4B;
-  --emerald-deep:#123F34;
-
-  --line: rgba(201,162,76,0.28);
-  --shadow-soft: 0 18px 40px -24px rgba(15,26,48,0.45);
-  --glow-gold: 0 0 28px -4px rgba(226,198,129,0.55);
+  --navy:       #15243F;
+  --navy-deep:  #0F1A30;
+  --gold:       #C9A24C;
+  --gold-ink:   #927022;
+  --emerald:    #1F6A57;
+  --ink:        #2B2A27;
+  --muted:      #7C776B;
+  --ivory:      #FAF7F0;
+  --card:       #FFFFFF;
+  --img-bg:     #F4F0E7;
+  --line:       #E7E1D4;
+  --line-soft:  #F1ECE0;
+  --sale:       #B4472C;
 
   --r-sm: 4px;
-  --r-md: 6px;
-  --r-lg: 8px;
+  --r-md: 8px;
+  --r-lg: 14px;
+  --r-pill: 999px;
 
-  --maxw: 1200px;
-  --pad: clamp(1.1rem, 4vw, 2.5rem);
-  --sec-y: clamp(4rem, 8vw, 7rem);
+  --maxw: 1280px;
+  --pad: clamp(1rem, 4vw, 2.4rem);
 
-  --ff-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --ff-display: "Playfair Display", Georgia, serif;
   --ff-body: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
-
 body {
   margin: 0;
   font-family: var(--ff-body);
-  font-weight: 400;
-  color: var(--brown);
+  color: var(--ink);
   background: var(--ivory);
-  line-height: 1.7;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-
-img { max-width: 100%; display: block; }
-
 a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
 
 .container {
   width: 100%;
@@ -74,808 +68,600 @@ a { color: inherit; text-decoration: none; }
   margin-inline: auto;
   padding-inline: var(--pad);
 }
-
-.eyebrow {
-  font-size: 0.78rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--gold-ink);
-  font-weight: 500;
-  margin: 0 0 0.9rem;
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
-
-.eyebrow--light { color: var(--gold-bright); }
-
-.section-title {
-  font-family: var(--ff-display);
-  font-weight: 600;
-  line-height: 1.12;
-  font-size: clamp(1.8rem, 3.6vw, 2.7rem);
-  margin: 0;
-  color: var(--brown);
-}
-
-.section-title--light { color: var(--ivory-card); }
-
 .icon { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-family: var(--ff-body);
-  font-weight: 500;
-  font-size: 0.92rem;
-  letter-spacing: 0.03em;
-  padding: 0.9rem 1.85rem;
-  border-radius: var(--r-md);
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.35s ease, color 0.3s ease, transform 0.15s ease, border-color 0.3s ease;
-}
-
-.btn-gold {
-  background: var(--gold);
-  color: var(--navy-deep);
-}
-.btn-gold:hover { background: var(--gold-bright); box-shadow: var(--glow-gold); }
-.btn-gold:active { transform: scale(0.98); box-shadow: 0 0 36px -2px rgba(226,198,129,0.7); }
-
-.btn-ghost {
-  background: transparent;
-  color: var(--gold-bright);
-  border-color: var(--line);
-}
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold); box-shadow: var(--glow-gold); }
-
-/* ---------- Announcement bar ---------- */
-.topbar {
+/* ---------- Promo strip ---------- */
+.promo {
   background: var(--navy-deep);
-  color: var(--gold-bright);
+  color: var(--gold);
   text-align: center;
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   padding: 0.55rem 1rem;
 }
+.promo strong { color: #E6CE92; font-weight: 600; }
 
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 60;
   background: var(--navy);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(201,162,76,0.22);
 }
-
 .header-inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
-  padding-block: 1rem;
+  padding-block: 0.95rem;
 }
-
 .logo {
   font-family: var(--ff-display);
   font-weight: 600;
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   color: var(--gold);
-  letter-spacing: 0.01em;
   white-space: nowrap;
 }
-
 .main-nav { justify-self: center; }
-.main-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2.1rem;
-  margin: 0;
-  padding: 0;
-}
+.main-nav ul { list-style: none; display: flex; gap: 1.9rem; margin: 0; padding: 0; }
 .main-nav a {
-  color: var(--ivory-card);
-  font-size: 0.88rem;
+  color: #EDE7D9;
+  font-size: 0.85rem;
   letter-spacing: 0.04em;
-  padding-block: 0.3rem;
+  padding-block: 0.35rem;
   position: relative;
-  transition: color 0.25s ease;
 }
 .main-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -2px;
-  height: 1px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
 }
-.main-nav a:hover { color: var(--gold-bright); }
+.main-nav a:hover { color: #fff; }
 .main-nav a:hover::after { transform: scaleX(1); }
+.main-nav a.is-active { color: var(--gold); }
 
-.header-actions {
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
+.header-actions { justify-self: end; display: flex; align-items: center; gap: 0.25rem; }
 .icon-btn {
-  background: transparent;
-  border: none;
-  color: var(--gold);
-  width: 42px;
-  height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  transition: color 0.25s ease, background 0.25s ease;
+  background: transparent; border: none; color: var(--gold);
+  width: 40px; height: 40px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; position: relative;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.icon-btn:hover { color: var(--gold-bright); background: rgba(226,198,129,0.08); }
-.icon-btn .icon { width: 21px; height: 21px; }
-
-.cart-count {
-  position: absolute;
-  top: 4px; right: 4px;
-  min-width: 17px;
-  height: 17px;
-  padding: 0 4px;
-  border-radius: 9px;
-  background: var(--gold);
-  color: var(--navy-deep);
-  font-size: 0.62rem;
-  font-weight: 600;
-  line-height: 17px;
-  text-align: center;
+.icon-btn:hover { background: rgba(201,162,76,0.1); color: #E6CE92; }
+.icon-btn .icon { width: 20px; height: 20px; }
+.count-badge {
+  position: absolute; top: 4px; right: 4px; min-width: 16px; height: 16px; padding: 0 4px;
+  background: var(--gold); color: var(--navy-deep); font-size: 0.6rem; font-weight: 700;
+  line-height: 16px; text-align: center; border-radius: 8px;
 }
-
 .nav-toggle { display: none; }
 
-/* ---------- Hero ---------- */
-.hero {
-  position: relative;
-  background: var(--navy);
-  color: var(--ivory-card);
-  overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(62% 58% at 50% -6%, rgba(226,198,129,0.26), rgba(226,198,129,0) 68%),
-    radial-gradient(40% 50% at 84% 110%, rgba(27,90,75,0.5), rgba(27,90,75,0) 70%);
-  pointer-events: none;
-}
-.hero-inner {
-  position: relative;
-  text-align: center;
-  padding-block: clamp(5rem, 12vw, 9rem);
-  max-width: 760px;
-  margin-inline: auto;
-}
-.hero h1 {
-  font-family: var(--ff-display);
-  font-weight: 700;
-  font-size: clamp(2.6rem, 6.4vw, 4.6rem);
-  line-height: 1.06;
-  margin: 0 0 1.3rem;
-  color: var(--gold-bright);
-}
-.hero p {
-  font-size: clamp(1rem, 1.7vw, 1.18rem);
-  color: rgba(245,239,227,0.82);
-  margin: 0 auto 2.3rem;
-  max-width: 540px;
-}
-.hero-actions {
-  display: flex;
-  gap: 0.9rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+/* ---------- Breadcrumb + page head ---------- */
+.crumbs { font-size: 0.78rem; color: var(--muted); padding-top: 1.4rem; }
+.crumbs a:hover { color: var(--gold-ink); }
+.crumbs span { color: var(--ink); }
 
-/* ---------- Categories ---------- */
-.categories { padding-block: var(--sec-y); background: var(--ivory); }
-.section-head { max-width: 620px; margin: 0 0 2.8rem; }
+.page-head { padding-top: 0.6rem; padding-bottom: 1.6rem; }
+.page-head h1 {
+  font-family: var(--ff-display); font-weight: 600;
+  font-size: clamp(2rem, 4.5vw, 3.1rem); margin: 0 0 0.5rem; color: var(--navy);
+}
+.page-head p { margin: 0; color: var(--muted); max-width: 560px; font-size: 0.98rem; }
 
-.cat-grid {
+/* ---------- Subcategory tiles ---------- */
+.subcats { padding-bottom: 2rem; }
+.subcat-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.4rem;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.9rem;
 }
-.cat-card {
-  background: var(--ivory-card);
-  border: 1px solid rgba(47,36,28,0.08);
+.subcat {
+  display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
+  padding: 1.3rem 0.6rem;
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: var(--r-lg);
-  padding: 2.4rem 2rem 2.1rem;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  text-align: center;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
-.cat-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--gold);
-  box-shadow: var(--shadow-soft), var(--glow-gold);
-}
-.cat-icon {
-  color: var(--gold-ink);
-  margin-bottom: 1.3rem;
-  transition: color 0.35s ease;
-}
-.cat-card:hover .cat-icon { color: var(--gold); }
-.cat-icon .icon { width: 52px; height: 52px; }
-.cat-card h3 {
-  font-family: var(--ff-display);
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin: 0 0 0.4rem;
-  color: var(--brown);
-  transition: transform 0.3s ease;
-  transform-origin: left;
-}
-.cat-card:hover h3 { transform: scale(1.04); }
-.cat-card p {
-  margin: 0 0 1.3rem;
-  color: var(--brown-soft);
-  font-size: 0.95rem;
-}
-.cat-link {
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  font-weight: 500;
-  color: var(--gold-ink);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: gap 0.25s ease, color 0.25s ease;
-}
-.cat-card:hover .cat-link { gap: 0.7rem; color: var(--gold); }
+.subcat:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 12px 26px -20px rgba(21,36,63,0.5); }
+.subcat .fixture { width: 52px; height: 52px; color: var(--navy); }
+.subcat span { font-size: 0.82rem; font-weight: 500; color: var(--ink); letter-spacing: 0.01em; }
 
-/* ---------- Designer's choice ---------- */
-.designer {
-  padding-block: var(--sec-y);
-  background: var(--navy);
-  position: relative;
-  overflow: hidden;
+/* ---------- Toolbar (filters / sort) ---------- */
+.toolbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding-block: 1rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.6rem;
 }
-.designer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(46% 40% at 16% 0%, rgba(226,198,129,0.12), rgba(226,198,129,0) 70%);
-  pointer-events: none;
+.filters { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--card); border: 1px solid var(--line); color: var(--ink);
+  font-size: 0.82rem; padding: 0.5rem 0.95rem; border-radius: var(--r-pill);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
-.designer .container { position: relative; }
-.prod-grid {
+.chip .icon { width: 15px; height: 15px; }
+.chip:hover { border-color: var(--gold); }
+.chip.is-on { background: var(--navy); color: #fff; border-color: var(--navy); }
+.chip.is-on .icon { color: var(--gold); }
+
+.toolbar-right { display: flex; align-items: center; gap: 1rem; }
+.count { font-size: 0.84rem; color: var(--muted); white-space: nowrap; }
+.sort {
+  position: relative; display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.84rem; color: var(--ink);
+}
+.sort select {
+  appearance: none; -webkit-appearance: none;
+  font-family: inherit; font-size: 0.84rem; color: var(--ink);
+  background: var(--card); border: 1px solid var(--line);
+  padding: 0.5rem 2rem 0.5rem 0.9rem; border-radius: var(--r-pill); cursor: pointer;
+}
+.sort::after {
+  content: ""; position: absolute; right: 0.85rem; width: 7px; height: 7px;
+  border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg) translateY(-2px); pointer-events: none;
+}
+
+/* ---------- Product grid ---------- */
+.product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.3rem;
+  gap: 1.5rem 1.3rem;
 }
-.prod-card {
-  background: var(--ivory-card);
-  border-radius: var(--r-lg);
-  overflow: hidden;
+.card { display: flex; flex-direction: column; }
+.card-media {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-.prod-card:hover { transform: translateY(-5px); box-shadow: var(--glow-gold); }
-
-.prod-media {
-  position: relative;
-  aspect-ratio: 4 / 3.4;
+  aspect-ratio: 1 / 1;
   background:
-    radial-gradient(60% 60% at 50% 36%, rgba(226,198,129,0.22), rgba(226,198,129,0) 70%),
-    #F1E8D6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold-ink);
-  border-bottom: 1px solid rgba(47,36,28,0.06);
+    radial-gradient(58% 58% at 50% 42%, rgba(201,162,76,0.12), rgba(201,162,76,0) 70%),
+    var(--img-bg);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
 }
-.prod-media .icon { width: 70px; height: 70px; opacity: 0.85; }
+.card-media .fixture {
+  width: 56%; height: 56%; color: var(--ink);
+  transition: transform 0.4s ease;
+}
+.card:hover .card-media .fixture { transform: scale(1.06); }
 
 .badge {
-  position: absolute;
-  top: 0.85rem;
-  left: 0.85rem;
-  background: var(--gold);
-  color: var(--navy-deep);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.28rem 0.65rem;
-  border-radius: var(--r-sm);
+  position: absolute; top: 0.7rem; left: 0.7rem;
+  font-size: 0.66rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.26rem 0.6rem; border-radius: var(--r-sm); background: var(--navy); color: #fff;
 }
+.badge--new { background: var(--emerald); }
+.badge--hit { background: var(--gold); color: var(--navy-deep); }
+.badge--sale { background: var(--sale); }
 
-.prod-body {
-  padding: 1.1rem 1.2rem 1.3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  flex: 1;
+.fav {
+  position: absolute; top: 0.5rem; right: 0.5rem;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.85); border: 1px solid var(--line); color: var(--muted);
+  display: inline-flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease;
 }
-.prod-kind {
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--brown-soft);
-}
-.prod-name {
-  font-family: var(--ff-display);
-  font-weight: 600;
-  font-size: 1.18rem;
-  color: var(--brown);
-  margin: 0;
-}
-.prod-price {
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--gold-ink);
-  margin-top: 0.15rem;
-}
-.prod-add {
-  margin-top: 0.9rem;
-  width: 100%;
-  justify-content: center;
-  padding: 0.75rem 1rem;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-}
-.prod-card:hover .prod-add,
-.prod-card:focus-within .prod-add { opacity: 1; transform: translateY(0); }
+.card:hover .fav { opacity: 1; transform: translateY(0); }
+.fav .icon { width: 17px; height: 17px; }
+.fav.is-on { color: var(--sale); background: #fff; }
+.fav.is-on .icon { fill: var(--sale); }
 
-/* ---------- Subscribe ---------- */
-.subscribe {
-  padding-block: var(--sec-y);
-  background: var(--emerald);
-  color: var(--ivory-card);
-  position: relative;
-  overflow: hidden;
+.card-body { padding-top: 0.85rem; }
+.card-type { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.card-name {
+  font-family: var(--ff-display); font-weight: 600; font-size: 1.08rem;
+  color: var(--navy); margin: 0.15rem 0 0.5rem;
 }
-.subscribe::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(50% 60% at 78% 0%, rgba(226,198,129,0.14), rgba(226,198,129,0) 70%);
-  pointer-events: none;
+.swatches { display: flex; gap: 0.35rem; margin-bottom: 0.55rem; }
+.swatch { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.12); }
+.sw-gold { background: #C9A24C; }
+.sw-black { background: #2B2B2B; }
+.sw-chrome { background: #CFCCC4; }
+.sw-emerald { background: #1F6A57; }
+.sw-white { background: #F2EFE8; }
+
+.price { display: flex; align-items: baseline; gap: 0.5rem; }
+.price b { font-weight: 600; font-size: 1.02rem; color: var(--gold-ink); }
+.price del { font-size: 0.85rem; color: var(--muted); }
+
+.card.is-hidden { display: none; }
+
+/* ---------- Load more ---------- */
+.more-wrap { text-align: center; padding: 2.6rem 0 1rem; }
+.btn-more {
+  background: transparent; border: 1px solid var(--navy); color: var(--navy);
+  font-weight: 500; font-size: 0.9rem; letter-spacing: 0.03em;
+  padding: 0.9rem 2.4rem; border-radius: var(--r-pill);
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.subscribe-inner {
-  position: relative;
-  max-width: 620px;
-  text-align: center;
-  margin-inline: auto;
+.btn-more:hover { background: var(--navy); color: #fff; }
+
+/* ---------- Newsletter ---------- */
+.newsletter { background: var(--emerald); color: #EAF3EF; }
+.newsletter-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  padding-block: clamp(2.2rem, 5vw, 3.4rem);
 }
-.subscribe h2 {
-  font-family: var(--ff-display);
-  font-weight: 600;
-  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
-  margin: 0 0 0.9rem;
-  color: var(--gold-bright);
+.newsletter h2 {
+  font-family: var(--ff-display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2.1rem);
+  margin: 0 0 0.4rem; color: #fff;
 }
-.subscribe p {
-  margin: 0 auto 2rem;
-  max-width: 460px;
-  color: rgba(245,239,227,0.85);
-  font-size: 1rem;
+.newsletter p { margin: 0; color: rgba(234,243,239,0.85); font-size: 0.95rem; max-width: 420px; }
+.news-form { display: flex; gap: 0.6rem; min-width: min(420px, 100%); }
+.news-form input {
+  flex: 1; font-family: inherit; font-size: 0.92rem;
+  padding: 0.85rem 1.1rem; border-radius: var(--r-pill); border: none; color: var(--ink); background: #FBF8F1;
 }
-.subscribe-form {
-  display: flex;
-  gap: 0.7rem;
-  max-width: 460px;
-  margin-inline: auto;
+.news-form input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.news-form button {
+  background: var(--gold); color: var(--navy-deep); border: none; font-weight: 600;
+  font-size: 0.88rem; padding: 0.85rem 1.6rem; border-radius: var(--r-pill);
+  transition: background 0.2s ease;
 }
-.subscribe-form input {
-  flex: 1;
-  font-family: var(--ff-body);
-  font-size: 0.95rem;
-  padding: 0.9rem 1.1rem;
-  border-radius: var(--r-md);
-  border: 1px solid rgba(245,239,227,0.25);
-  background: var(--ivory-card);
-  color: var(--brown);
-}
-.subscribe-form input::placeholder { color: var(--brown-soft); }
-.subscribe-form input:focus {
-  outline: none;
-  border-color: var(--gold-bright);
-  box-shadow: 0 0 0 3px rgba(226,198,129,0.25);
-}
-.subscribe-note {
-  margin-top: 1.1rem;
-  font-size: 0.92rem;
-  color: var(--gold-bright);
-  min-height: 1.2rem;
-}
+.news-form button:hover { background: #E2C681; }
+.news-note { font-size: 0.85rem; color: #DCEAE4; margin-top: 0.7rem; min-height: 1.1rem; width: 100%; }
 
 /* ---------- Footer ---------- */
-.site-footer {
-  background: var(--navy-deep);
-  color: rgba(245,239,227,0.7);
-  padding-top: clamp(3rem, 6vw, 4.5rem);
-}
+.site-footer { background: var(--navy-deep); color: rgba(237,231,217,0.66); padding-top: clamp(2.6rem, 5vw, 3.8rem); }
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 2rem;
-  padding-bottom: 3rem;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 2.6rem;
 }
-.footer-brand .logo { display: inline-block; margin-bottom: 0.9rem; }
-.footer-brand p { font-size: 0.9rem; max-width: 300px; margin: 0; }
-.footer-col h4 {
-  font-family: var(--ff-body);
-  font-weight: 500;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin: 0 0 1.1rem;
+.footer-brand .logo { display: inline-block; margin-bottom: 0.8rem; }
+.footer-brand p { font-size: 0.88rem; max-width: 300px; margin: 0; }
+.footer-col h3 {
+  font-family: var(--ff-body); font-weight: 600; font-size: 0.76rem; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--gold); margin: 0 0 1rem;
 }
-.footer-col h4:nth-of-type(2) { margin-top: 1.4rem; }
-.footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
-.footer-col a, .footer-col li { font-size: 0.9rem; color: rgba(245,239,227,0.7); transition: color 0.25s ease; }
-.footer-col a:hover { color: var(--gold-bright); }
-
-.socials { display: flex; gap: 0.7rem; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.footer-col a, .footer-col li { font-size: 0.88rem; color: rgba(237,231,217,0.66); transition: color 0.2s ease; }
+.footer-col a:hover { color: #E6CE92; }
+.socials { display: flex; gap: 0.6rem; margin-top: 0.4rem; }
 .socials a {
-  width: 38px; height: 38px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.3s ease;
+  width: 36px; height: 36px; border: 1px solid rgba(201,162,76,0.3); border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; color: var(--gold);
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
-.socials a:hover { border-color: var(--gold); color: var(--gold-bright); box-shadow: var(--glow-gold); }
-.socials .icon { width: 18px; height: 18px; }
-
+.socials a:hover { border-color: var(--gold); color: #E6CE92; }
+.socials .icon { width: 17px; height: 17px; }
 .footer-bottom {
-  border-top: 1px solid rgba(245,239,227,0.1);
-  padding-block: 1.4rem;
-  text-align: center;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  color: rgba(245,239,227,0.5);
-}
-
-/* ---------- Scroll reveal (progressive enhancement) ---------- */
-.js .reveal { opacity: 0; transform: translateY(22px); }
-.js .reveal.is-visible {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  border-top: 1px solid rgba(237,231,217,0.1); padding-block: 1.3rem;
+  text-align: center; font-size: 0.79rem; color: rgba(237,231,217,0.45); letter-spacing: 0.03em;
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
-  .cat-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
-  .prod-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .prod-add { opacity: 1; transform: none; }
+@media (max-width: 1050px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .subcat-row { grid-template-columns: repeat(3, 1fr); }
 }
-
 @media (max-width: 760px) {
   .header-inner { grid-template-columns: auto 1fr auto; }
+  .nav-toggle { display: inline-flex; order: -1; justify-self: start; }
+  .logo { justify-self: center; }
   .main-nav {
-    position: absolute;
-    top: 100%;
-    left: 0; right: 0;
-    background: var(--navy);
-    border-bottom: 1px solid var(--line);
-    padding: 0.5rem 0 1.2rem;
-    display: none;
+    position: absolute; top: 100%; left: 0; right: 0; background: var(--navy);
+    border-bottom: 1px solid rgba(201,162,76,0.22); padding: 0.4rem 0 1rem; display: none;
   }
   .main-nav.open { display: block; }
   .main-nav ul { flex-direction: column; gap: 0; align-items: center; }
   .main-nav li { width: 100%; text-align: center; }
   .main-nav a { display: block; padding: 0.8rem; }
-  .nav-toggle {
-    display: inline-flex;
-    order: -1;
-    justify-self: start;
-  }
-  .logo { justify-self: center; font-size: 1.3rem; }
-  .header-actions { justify-self: end; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem 1rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .newsletter-inner { flex-direction: column; align-items: flex-start; }
+  .news-form { width: 100%; }
 }
-
-@media (max-width: 520px) {
-  .prod-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
+@media (max-width: 440px) {
+  .subcat-row { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
-  .subscribe-form { flex-direction: column; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
-  .js .reveal { opacity: 1; transform: none; }
 }
 
-
-/* ============================================================
-   Hero chandelier (SVG) — glows through navy, near the headline
-   ============================================================ */
-.hero-inner { max-width: var(--maxw); z-index: 2; }
-.hero-content { max-width: 560px; margin-inline: auto; }
-
-.hero-chandelier {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: clamp(50px, 11vw, 180px);
-  display: flex;
-  align-items: flex-start;
-  z-index: 1;
-  pointer-events: none;
-}
-.hero-chandelier .chandelier {
-  height: clamp(290px, 56vh, 430px);
-  width: auto; display: block; overflow: visible;
-}
-.chandelier { color: var(--gold); }
-.chandelier .ch-line { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.chandelier .ch-strand { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0.5 4.2; opacity: 0.85; }
-.chandelier .ch-drop { fill: rgba(226,198,129,0.22); stroke: currentColor; stroke-width: 0.9; }
-.chandelier .ch-spark1, .chandelier .ch-spark2, .chandelier .ch-spark3 { fill: #FFE9B0; }
-.chandelier .ch-spark1 { animation: ch-twinkle 4s ease-in-out infinite; }
-.chandelier .ch-spark2 { animation: ch-twinkle 4s ease-in-out infinite 1.3s; }
-.chandelier .ch-spark3 { animation: ch-twinkle 4s ease-in-out infinite 2.6s; }
-@keyframes ch-twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-
-@media (min-width: 761px) {
-  .hero-inner { padding-left: clamp(300px, 26vw, 332px); }
-}
-@media (max-width: 1024px) and (min-width: 761px) {
-  .hero-chandelier { left: clamp(30px, 6vw, 80px); }
-  .hero-chandelier .chandelier { height: 330px; }
-  .hero-inner { padding-left: clamp(255px, 30vw, 296px); }
-}
-
-/* ============================================================
-   Spotlights: 1 top, 2 bottom — cones expand onto cards on hover
-   ============================================================ */
-.stage { position: relative; }
-.spotlight { position: absolute; color: var(--gold); pointer-events: none; z-index: 3; line-height: 0; }
-.spot-svg { width: 42px; height: auto; display: block; overflow: visible; }
-.spot-stroke { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.spot-lens { fill: var(--gold-bright); stroke: none; }
-.spotlight::after {
-  content: ""; position: absolute; left: 50%; top: 70%;
-  width: 56px; height: 120px; transform: translateX(-50%);
-  background: radial-gradient(ellipse 50% 50% at 50% 0%, rgba(226,198,129,0.12), rgba(226,198,129,0) 72%);
-  pointer-events: none;
-}
-.spotlight--t  { top: -46px; left: 50%; transform: translateX(-50%); }
-.spotlight--bl { bottom: -48px; left: 26%; transform: rotate(180deg); }
-.spotlight--br { bottom: -48px; right: 26%; transform: rotate(180deg); }
-
-/* a card lit by the spotlight on hover: descending cone + sparkling, shimmering edge */
-.prod-card { position: relative; }
-.prod-card::before {
-  content: ""; position: absolute; left: 50%; top: -4%;
-  width: 130%; height: 78%;
-  transform: translateX(-50%) scaleY(0.5); transform-origin: top center;
-  background: linear-gradient(to bottom, rgba(255,233,176,0.55), rgba(255,233,176,0.06) 68%, rgba(255,233,176,0));
-  clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
-  opacity: 0; pointer-events: none; z-index: 2;
-  transition: opacity 0.4s ease, transform 0.5s ease;
-}
-.prod-card:hover::before { opacity: 1; transform: translateX(-50%) scaleY(1); }
-.prod-card::after {
-  content: ""; position: absolute; inset: 0; border-radius: inherit;
-  pointer-events: none; z-index: 4; opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.prod-card:hover::after { opacity: 1; animation: card-sparkle 1.8s ease-in-out infinite; }
-@keyframes card-sparkle {
-  0%, 100% { box-shadow: inset 0 0 0 1px rgba(226,198,129,0.7), 0 0 16px rgba(226,198,129,0.28); }
-  50%      { box-shadow: inset 0 0 0 1px rgba(255,233,176,0.95), 0 0 26px rgba(255,233,176,0.45); }
-}
-.prod-card:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -24px rgba(0,0,0,0.55); }
-
-@media (max-width: 900px) { .hero-chandelier .chandelier { height: 300px; } }
-@media (max-width: 760px) {
-  .spotlight { display: none; }
-  .hero-chandelier { display: none; }
-}
+/* fixture illustrations (SVG sprite) */
+.sprite { display: none; }
+.fixture { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.btn-more.is-done { opacity: 0.6; cursor: default; border-color: var(--line); color: var(--muted); }
+.btn-more.is-done:hover { background: transparent; color: var(--muted); }
 
 </style>
 </head>
 <body>
 
-  <div class="topbar">Бесплатная доставка по Москве при заказе от 30&nbsp;000&nbsp;₽</div>
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="f-pendant" viewBox="0 0 120 120">
+      <path d="M42 18 H78"/><path d="M60 18 V42"/>
+      <path d="M46 64 Q46 42 60 42 Q74 42 74 64"/><path d="M44 64 H76"/>
+      <circle cx="60" cy="72" r="5"/>
+    </symbol>
+    <symbol id="f-chandelier" viewBox="0 0 120 120">
+      <path d="M60 16 V26"/><circle cx="60" cy="29" r="3.4"/><path d="M60 32 V50"/>
+      <path d="M60 35 C46 37 40 44 40 52"/><path d="M60 35 C74 37 80 44 80 52"/>
+      <path d="M37 52 H43"/><path d="M57 50 H63"/><path d="M77 52 H83"/>
+      <circle cx="40" cy="56" r="4.6"/><circle cx="60" cy="54" r="4.6"/><circle cx="80" cy="56" r="4.6"/>
+    </symbol>
+    <symbol id="f-floor" viewBox="0 0 120 120">
+      <path d="M46 28 H74 L70 46 H50 Z"/><path d="M60 46 V94"/>
+      <path d="M48 96 Q60 100 72 96"/>
+    </symbol>
+    <symbol id="f-table" viewBox="0 0 120 120">
+      <path d="M48 38 H72 L68 56 H52 Z"/><path d="M60 56 V76"/>
+      <path d="M52 80 Q60 84 68 80"/>
+    </symbol>
+    <symbol id="f-sconce" viewBox="0 0 120 120">
+      <path d="M32 34 V86"/><circle cx="32" cy="60" r="4.4"/>
+      <path d="M36 60 H58"/><path d="M58 60 V53"/>
+      <path d="M50 53 H66 L62 45 H54 Z"/><circle cx="58" cy="50" r="1.6"/>
+    </symbol>
+    <symbol id="f-flush" viewBox="0 0 120 120">
+      <path d="M38 38 H82"/><path d="M46 38 Q60 60 74 38"/>
+      <path d="M52 38 Q60 51 68 38"/><circle cx="60" cy="50" r="2.4"/>
+    </symbol>
+  </svg>
+
+  <div class="promo">Летняя распродажа — <strong>скидки до 50%</strong> на освещение · Бесплатная доставка от 30 000 ₽</div>
 
   <header class="site-header">
     <div class="container header-inner">
       <button class="icon-btn nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="main-nav">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
-
       <a class="logo" href="/">Мебель и свет</a>
-
       <nav class="main-nav" id="main-nav" aria-label="Основное меню">
         <ul>
+          <li><a class="is-active" href="/osveshchenie/">Освещение</a></li>
           <li><a href="/lyustry/">Люстры</a></li>
           <li><a href="/lampy/">Лампы</a></li>
+          <li><a href="/bra/">Бра</a></li>
           <li><a href="/mebel/">Мебель</a></li>
-          <li><a href="/brands/">Бренды</a></li>
+          <li><a href="/sale/">Распродажа</a></li>
         </ul>
       </nav>
-
       <div class="header-actions">
         <button class="icon-btn" type="button" aria-label="Поиск">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
         </button>
+        <button class="icon-btn" type="button" aria-label="Личный кабинет">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>
+        </button>
+        <button class="icon-btn" type="button" aria-label="Избранное">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg>
+          <span class="count-badge" data-fav-count>0</span>
+        </button>
         <button class="icon-btn" type="button" aria-label="Корзина">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
-          <span class="cart-count">0</span>
+          <span class="count-badge">0</span>
         </button>
       </div>
     </div>
   </header>
 
   <main>
+    <div class="container">
+      <nav class="crumbs" aria-label="Хлебные крошки">
+        <a href="/">Главная</a> / <span>Освещение</span>
+      </nav>
 
-    <!-- Экран 1 — Hero -->
-    <section class="hero">
-      <div class="hero-chandelier" aria-hidden="true"><svg class="chandelier" viewBox="0 0 260 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><defs><radialGradient id="chGlow" cx="50%" cy="50%" r="62%"><stop offset="0%" stop-color="#E2C681" stop-opacity="0.5"/><stop offset="44%" stop-color="#C9A24C" stop-opacity="0.14"/><stop offset="100%" stop-color="#C9A24C" stop-opacity="0"/></radialGradient><radialGradient id="chInner" cx="50%" cy="56%" r="55%"><stop offset="0%" stop-color="#FFE9B0" stop-opacity="0.42"/><stop offset="55%" stop-color="#E2C681" stop-opacity="0.12"/><stop offset="100%" stop-color="#E2C681" stop-opacity="0"/></radialGradient></defs><ellipse cx="130" cy="210" rx="150" ry="200" fill="url(#chGlow)"/><ellipse class="ch-line" cx="130" cy="6" rx="18" ry="4"/><ellipse class="ch-line" cx="130" cy="11" rx="13.5" ry="3.3"/><ellipse class="ch-line" cx="130" cy="16" rx="9.5" ry="2.8"/><line class="ch-line" x1="130" y1="19" x2="130" y2="30"/><ellipse class="ch-line" cx="130" cy="34" rx="13" ry="4"/><ellipse class="ch-line ch-ring" cx="130" cy="208" rx="118" ry="22"/><ellipse class="ch-line ch-ring" cx="130" cy="208" rx="113" ry="19.6"/><path class="ch-strand" d="M 142.0 34.0 Q 264.5 109.0 248.0 208.0"/><path class="ch-strand" d="M 141.3 35.4 Q 256.4 109.0 240.9 215.5"/><path class="ch-strand" d="M 139.2 36.6 Q 233.0 109.0 220.4 222.1"/><path class="ch-strand" d="M 136.0 37.5 Q 197.3 109.0 189.0 227.1"/><path class="ch-strand" d="M 132.1 37.9 Q 153.4 109.0 150.5 229.7"/><path class="ch-strand" d="M 127.9 37.9 Q 106.6 109.0 109.5 229.7"/><path class="ch-strand" d="M 124.0 37.5 Q 62.7 109.0 71.0 227.1"/><path class="ch-strand" d="M 120.8 36.6 Q 27.0 109.0 39.6 222.1"/><path class="ch-strand" d="M 118.7 35.4 Q 3.6 109.0 19.1 215.5"/><path class="ch-strand" d="M 118.0 34.0 Q -4.5 109.0 12.0 208.0"/><path class="ch-strand" d="M 118.7 32.6 Q 3.6 109.0 19.1 200.5"/><path class="ch-strand" d="M 120.8 31.4 Q 27.0 109.0 39.6 193.9"/><path class="ch-strand" d="M 124.0 30.5 Q 62.7 109.0 71.0 188.9"/><path class="ch-strand" d="M 127.9 30.1 Q 106.6 109.0 109.5 186.3"/><path class="ch-strand" d="M 132.1 30.1 Q 153.4 109.0 150.5 186.3"/><path class="ch-strand" d="M 136.0 30.5 Q 197.3 109.0 189.0 188.9"/><path class="ch-strand" d="M 139.2 31.4 Q 233.0 109.0 220.4 193.9"/><path class="ch-strand" d="M 141.3 32.6 Q 256.4 109.0 240.9 200.5"/><ellipse cx="130" cy="238" rx="94" ry="120" fill="url(#chInner)"/><path class="ch-strand" d="M 248.0 208.0 Q 250.4 292.0 140.0 360.0"/><path class="ch-strand" d="M 240.9 215.5 Q 243.1 292.0 139.4 361.0"/><path class="ch-strand" d="M 220.4 222.1 Q 222.2 292.0 137.7 361.9"/><path class="ch-strand" d="M 189.0 227.1 Q 190.2 292.0 135.0 362.6"/><path class="ch-strand" d="M 150.5 229.7 Q 150.9 292.0 131.7 363.0"/><path class="ch-strand" d="M 109.5 229.7 Q 109.1 292.0 128.3 363.0"/><path class="ch-strand" d="M 71.0 227.1 Q 69.8 292.0 125.0 362.6"/><path class="ch-strand" d="M 39.6 222.1 Q 37.8 292.0 122.3 361.9"/><path class="ch-strand" d="M 19.1 215.5 Q 16.9 292.0 120.6 361.0"/><path class="ch-strand" d="M 12.0 208.0 Q 9.6 292.0 120.0 360.0"/><path class="ch-strand" d="M 19.1 200.5 Q 16.9 292.0 120.6 359.0"/><path class="ch-strand" d="M 39.6 193.9 Q 37.8 292.0 122.3 358.1"/><path class="ch-strand" d="M 71.0 188.9 Q 69.8 292.0 125.0 357.4"/><path class="ch-strand" d="M 109.5 186.3 Q 109.1 292.0 128.3 357.0"/><path class="ch-strand" d="M 150.5 186.3 Q 150.9 292.0 131.7 357.0"/><path class="ch-strand" d="M 189.0 188.9 Q 190.2 292.0 135.0 357.4"/><path class="ch-strand" d="M 220.4 193.9 Q 222.2 292.0 137.7 358.1"/><path class="ch-strand" d="M 240.9 200.5 Q 243.1 292.0 139.4 359.0"/><path class="ch-drop" d="M 240.8837292527372 217.52444315316473 C 237.9 222.6 237.9 229.8 240.8837292527372 232.52444315316473 C 243.9 229.8 243.9 222.6 240.8837292527372 217.52444315316473 Z"/><path class="ch-drop" d="M 220.3932442880394 224.14132741310385 C 217.4 229.2 217.4 236.4 220.3932442880394 239.14132741310385 C 223.4 236.4 223.4 229.2 220.3932442880394 224.14132741310385 Z"/><path class="ch-drop" d="M 189.0 229.05255888325766 C 186.0 234.2 186.0 241.4 189.0 244.05255888325766 C 192.0 241.4 192.0 234.2 189.0 229.05255888325766 Z"/><path class="ch-drop" d="M 150.4904849646978 231.66577056626858 C 147.5 236.8 147.5 244.0 150.4904849646978 246.66577056626858 C 153.5 244.0 153.5 236.8 150.4904849646978 231.66577056626858 Z"/><path class="ch-drop" d="M 109.50951503530223 231.66577056626858 C 106.5 236.8 106.5 244.0 109.50951503530223 246.66577056626858 C 112.5 244.0 112.5 236.8 109.50951503530223 231.66577056626858 Z"/><path class="ch-drop" d="M 71.00000000000003 229.05255888325766 C 68.0 234.2 68.0 241.4 71.00000000000003 244.05255888325766 C 74.0 241.4 74.0 234.2 71.00000000000003 229.05255888325766 Z"/><path class="ch-drop" d="M 39.6067557119606 224.14132741310388 C 36.6 229.2 36.6 236.4 39.6067557119606 239.14132741310388 C 42.6 236.4 42.6 229.2 39.6067557119606 224.14132741310388 Z"/><path class="ch-drop" d="M 19.116270747262817 217.52444315316473 C 16.1 222.6 16.1 229.8 19.116270747262817 232.52444315316473 C 22.1 229.8 22.1 222.6 19.116270747262817 217.52444315316473 Z"/><ellipse class="ch-line" cx="130" cy="360" rx="10" ry="3"/><ellipse class="ch-drop" cx="130" cy="370" rx="3.2" ry="5.5"/><path class="ch-drop" d="M 130 378 C 124.0 386.8 124.0 399.3 130 404 C 136.0 399.3 136.0 386.8 130 378 Z"/><path class="ch-spark1" d="M 72 147.60855051165015 L 72.7 149.3 L 74.39144948834985 150 L 72.7 150.7 L 72 152.39144948834985 L 71.3 150.7 L 69.60855051165015 150 L 71.3 149.3 Z"/><path class="ch-spark2" d="M 100 117.76423574346795 L 100.6 119.4 L 102.23576425653205 120 L 100.6 120.6 L 100 122.23576425653205 L 99.4 120.6 L 97.76423574346795 120 L 99.4 119.4 Z"/><path class="ch-spark3" d="M 150 127.31415897426413 L 150.8 129.2 L 152.68584102573587 130 L 150.8 130.8 L 150 132.68584102573587 L 149.2 130.8 L 147.31415897426413 130 L 149.2 129.2 Z"/><path class="ch-spark1" d="M 186 153.8348073419992 L 186.6 155.4 L 188.1651926580008 156 L 186.6 156.6 L 186 158.1651926580008 L 185.4 156.6 L 183.8348073419992 156 L 185.4 155.4 Z"/><path class="ch-spark2" d="M 60 202.417706196124 L 60.7 204.3 L 62.58229380387602 205 L 60.7 205.7 L 60 207.582293803876 L 59.3 205.7 L 57.41770619612398 205 L 59.3 204.3 Z"/><path class="ch-spark3" d="M 200 202.57087997477868 L 200.7 204.3 L 202.42912002522132 205 L 200.7 205.7 L 200 207.42912002522132 L 199.3 205.7 L 197.57087997477868 205 L 199.3 204.3 Z"/><path class="ch-spark1" d="M 96 247.84780096770277 L 96.6 249.4 L 98.15219903229723 250 L 96.6 250.6 L 96 252.15219903229723 L 95.4 250.6 L 93.84780096770277 250 L 95.4 249.4 Z"/><path class="ch-spark2" d="M 165 252.44330784012953 L 165.7 254.3 L 167.55669215987047 255 L 165.7 255.7 L 165 257.55669215987047 L 164.3 255.7 L 162.44330784012953 255 L 164.3 254.3 Z"/><path class="ch-spark3" d="M 110 297.8662539074022 L 110.6 299.4 L 112.13374609259779 300 L 110.6 300.6 L 110 302.1337460925978 L 109.4 300.6 L 107.86625390740221 300 L 109.4 299.4 Z"/><path class="ch-spark1" d="M 150 302.50971888470383 L 150.7 304.3 L 152.49028111529614 305 L 150.7 305.7 L 150 307.49028111529617 L 149.3 305.7 L 147.50971888470386 305 L 149.3 304.3 Z"/><path class="ch-spark2" d="M 130 207.83713011878285 L 130.6 209.4 L 132.16286988121715 210 L 130.6 210.6 L 130 212.16286988121715 L 129.4 210.6 L 127.83713011878284 210 L 129.4 209.4 Z"/><path class="ch-spark3" d="M 130 342.8183582879905 L 130.6 344.4 L 132.18164171200948 345 L 130.6 345.6 L 130 347.1816417120095 L 129.4 345.6 L 127.81835828799052 345 L 129.4 344.4 Z"/><path class="ch-spark1" d="M 82 327.51793272977176 L 82.7 329.3 L 84.48206727022826 330 L 82.7 330.7 L 82 332.48206727022824 L 81.3 330.7 L 79.51793272977174 330 L 81.3 329.3 Z"/><path class="ch-spark2" d="M 178 327.15583308779514 L 178.8 329.2 L 180.84416691220483 330 L 178.8 330.8 L 178 332.84416691220486 L 177.2 330.8 L 175.15583308779517 330 L 177.2 329.2 Z"/></svg></div>
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <p class="eyebrow eyebrow--light reveal">Коллекция 2026</p>
-          <h1 class="reveal">Искусство света<br>в вашем доме</h1>
-          <p class="reveal">Люстры, лампы и мебель, собранные с вниманием к деталям — для дома, в котором хочется оставаться.</p>
-          <div class="hero-actions reveal">
-            <a class="btn btn-gold" href="/catalog/">Смотреть коллекцию</a>
-            <a class="btn btn-ghost" href="/designer/">Выбор дизайнера</a>
+      <div class="page-head">
+        <h1>Освещение</h1>
+        <p>Люстры, подвесы, настольные лампы, торшеры, бра и потолочные светильники — выберите свет для каждой комнаты.</p>
+      </div>
+
+      <section class="subcats" aria-label="Подкатегории">
+        <div class="subcat-row">
+          <a class="subcat" href="/lyustry/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg><span>Люстры</span></a>
+          <a class="subcat" href="/podvesy/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-pendant"/></svg><span>Подвесы</span></a>
+          <a class="subcat" href="/nastolnye/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-table"/></svg><span>Настольные лампы</span></a>
+          <a class="subcat" href="/torshery/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-floor"/></svg><span>Торшеры</span></a>
+          <a class="subcat" href="/bra/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-sconce"/></svg><span>Бра</span></a>
+          <a class="subcat" href="/potolochnye/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-flush"/></svg><span>Потолочные</span></a>
+        </div>
+      </section>
+
+      <div class="toolbar">
+        <div class="filters">
+          <button class="chip" type="button" aria-label="Фильтры">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg> Фильтры
+          </button>
+          <button class="chip" type="button" data-filter="stock">В наличии</button>
+          <button class="chip" type="button">Цена</button>
+          <button class="chip" type="button">Тип</button>
+          <button class="chip" type="button">Цвет</button>
+        </div>
+        <div class="toolbar-right">
+          <span class="count"><b data-count>12</b> товаров</span>
+          <label class="sort">
+            <span class="sr-only">Сортировка</span>
+            <select data-sort>
+              <option value="popular">Популярные</option>
+              <option value="cheap">Сначала дешевле</option>
+              <option value="exp">Сначала дороже</option>
+              <option value="name">По названию</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <section class="product-grid" data-grid aria-label="Товары">
+
+        <article class="card" data-price="8900" data-name="Орбита" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--new">Новинка</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-pendant"/></svg>
           </div>
-        </div>
+          <div class="card-body">
+            <p class="card-type">Подвес</p><h3 class="card-name">Орбита</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
+            <p class="price"><b>8 900 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="42500" data-name="Вена" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--hit">Хит</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Люстра</p><h3 class="card-name">Вена</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-chrome"></span><span class="swatch sw-black"></span></div>
+            <p class="price"><b>42 500 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="14700" data-name="Норд" data-stock="out">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-floor"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Торшер</p><h3 class="card-name">Норд</h3>
+            <div class="swatches"><span class="swatch sw-black"></span><span class="swatch sw-emerald"></span></div>
+            <p class="price"><b>14 700 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="6400" data-name="Сатин" data-stock="in">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-table"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Настольная лампа</p><h3 class="card-name">Сатин</h3>
+            <div class="swatches"><span class="swatch sw-white"></span><span class="swatch sw-gold"></span></div>
+            <p class="price"><b>6 400 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="4900" data-name="Линия" data-stock="out">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-sconce"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Бра</p><h3 class="card-name">Линия</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
+            <p class="price"><b>4 900 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="9200" data-name="Диск" data-stock="in">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-flush"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Потолочный</p><h3 class="card-name">Диск</h3>
+            <div class="swatches"><span class="swatch sw-white"></span><span class="swatch sw-chrome"></span></div>
+            <p class="price"><b>9 200 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="56200" data-name="Каскад" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--sale">−20%</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Люстра</p><h3 class="card-name">Каскад</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-chrome"></span></div>
+            <p class="price"><del>70 200 ₽</del> <b>56 200 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="5600" data-name="Колба" data-stock="out">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-pendant"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Подвес</p><h3 class="card-name">Колба</h3>
+            <div class="swatches"><span class="swatch sw-black"></span><span class="swatch sw-chrome"></span></div>
+            <p class="price"><b>5 600 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="19900" data-name="Арка" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--hit">Хит</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-floor"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Торшер</p><h3 class="card-name">Арка</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
+            <p class="price"><b>19 900 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="7800" data-name="Грин" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--new">Новинка</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-table"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Настольная лампа</p><h3 class="card-name">Грин</h3>
+            <div class="swatches"><span class="swatch sw-emerald"></span><span class="swatch sw-white"></span></div>
+            <p class="price"><b>7 800 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="6300" data-name="Дуга" data-stock="out">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-sconce"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Бра</p><h3 class="card-name">Дуга</h3>
+            <div class="swatches"><span class="swatch sw-chrome"></span><span class="swatch sw-gold"></span></div>
+            <p class="price"><b>6 300 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="38400" data-name="Корона" data-stock="in">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Люстра</p><h3 class="card-name">Корона</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span><span class="swatch sw-chrome"></span></div>
+            <p class="price"><b>38 400 ₽</b></p>
+          </div>
+        </article>
+
+      </section>
+
+      <div class="more-wrap">
+        <button class="btn-more" type="button">Показать ещё</button>
       </div>
-    </section>
+    </div>
 
-    <!-- Экран 2 — Категории -->
-    <section class="categories">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Категории</p>
-          <h2 class="section-title">Свет и уют для каждой комнаты</h2>
+    <section class="newsletter">
+      <div class="container newsletter-inner">
+        <div>
+          <h2>Свет со скидкой — первым</h2>
+          <p>Подпишитесь: новинки и закрытые предложения будем присылать раньше, чем они появятся в каталоге.</p>
         </div>
-
-        <div class="cat-grid">
-          <a class="cat-card reveal" href="/lyustry/">
-            <div class="cat-icon">
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M24 6v6"/><path d="M10 18q14-9 28 0"/>
-                <path d="M10 18v4M24 12v4M38 18v4"/>
-                <circle cx="10" cy="26" r="3.4"/><circle cx="24" cy="26" r="3.4"/><circle cx="38" cy="26" r="3.4"/>
-              </svg>
-            </div>
-            <h3>Люстры</h3>
-            <p>Центральный свет с характером — от классики до модерна.</p>
-            <span class="cat-link">Смотреть
-              <svg class="icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
-
-          <a class="cat-card reveal" href="/lampy/">
-            <div class="cat-icon">
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M16 22h16l-4-12H20z"/>
-                <path d="M24 22v16"/>
-                <path d="M16 39q8-4 16 0"/>
-              </svg>
-            </div>
-            <h3>Лампы</h3>
-            <p>Мягкий свет для вечеров — настольные и напольные модели.</p>
-            <span class="cat-link">Смотреть
-              <svg class="icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
-
-          <a class="cat-card reveal" href="/mebel/">
-            <div class="cat-icon">
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M9 30v-6a3 3 0 0 1 3-3h24a3 3 0 0 1 3 3v6"/>
-                <rect x="7" y="30" width="34" height="9" rx="2"/>
-                <path d="M12 39v4M36 39v4"/>
-              </svg>
-            </div>
-            <h3>Мебель</h3>
-            <p>Комфорт, который чувствуешь — кресла, диваны и акценты.</p>
-            <span class="cat-link">Смотреть
-              <svg class="icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Экран 3 — Выбор дизайнера -->
-    <section class="designer">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow eyebrow--light">Выбор дизайнера</p>
-          <h2 class="section-title section-title--light">Избранное этого сезона</h2>
-        </div>
-
-        <div class="stage">
-        <span class="spotlight spotlight--t" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
-        <span class="spotlight spotlight--bl" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
-        <span class="spotlight spotlight--br" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
-        <div class="prod-grid">
-          <article class="prod-card reveal">
-            <div class="prod-media">
-              <span class="badge">Хит</span>
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v6"/><path d="M10 18q14-9 28 0"/><path d="M10 18v4M24 12v4M38 18v4"/><circle cx="10" cy="26" r="3.4"/><circle cx="24" cy="26" r="3.4"/><circle cx="38" cy="26" r="3.4"/></svg>
-            </div>
-            <div class="prod-body">
-              <span class="prod-kind">Люстра</span>
-              <h3 class="prod-name">Кьяра</h3>
-              <span class="prod-price">48&nbsp;900&nbsp;₽</span>
-              <button class="btn btn-gold prod-add" type="button">В корзину</button>
-            </div>
-          </article>
-
-          <article class="prod-card reveal">
-            <div class="prod-media">
-              <span class="badge">Новинка</span>
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 22h16l-4-12H20z"/><path d="M24 22v16"/><path d="M16 39q8-4 16 0"/></svg>
-            </div>
-            <div class="prod-body">
-              <span class="prod-kind">Лампа</span>
-              <h3 class="prod-name">Аврора</h3>
-              <span class="prod-price">12&nbsp;400&nbsp;₽</span>
-              <button class="btn btn-gold prod-add" type="button">В корзину</button>
-            </div>
-          </article>
-
-          <article class="prod-card reveal">
-            <div class="prod-media">
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 28v-4a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v4"/><rect x="10" y="28" width="28" height="8" rx="2"/><path d="M14 36v4M34 36v4"/><path d="M12 24v-2M36 24v-2"/></svg>
-            </div>
-            <div class="prod-body">
-              <span class="prod-kind">Кресло</span>
-              <h3 class="prod-name">Бергамо</h3>
-              <span class="prod-price">34&nbsp;700&nbsp;₽</span>
-              <button class="btn btn-gold prod-add" type="button">В корзину</button>
-            </div>
-          </article>
-
-          <article class="prod-card reveal">
-            <div class="prod-media">
-              <span class="badge">Хит</span>
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v5"/><path d="M8 16q16-8 32 0"/><path d="M8 16v5M16 13v4M24 11v5M32 13v4M40 16v5"/><circle cx="8" cy="25" r="2.8"/><circle cx="16" cy="22" r="2.8"/><circle cx="24" cy="20" r="2.8"/><circle cx="32" cy="22" r="2.8"/><circle cx="40" cy="25" r="2.8"/></svg>
-            </div>
-            <div class="prod-body">
-              <span class="prod-kind">Люстра</span>
-              <h3 class="prod-name">Каскад</h3>
-              <span class="prod-price">56&nbsp;200&nbsp;₽</span>
-              <button class="btn btn-gold prod-add" type="button">В корзину</button>
-            </div>
-          </article>
-        </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Экран 4 — Подписка -->
-    <section class="subscribe">
-      <div class="container subscribe-inner">
-        <p class="eyebrow eyebrow--light reveal">Закрытый клуб</p>
-        <h2 class="reveal">Закрытые скидки — первым</h2>
-        <p class="reveal">Оставьте почту: новинки и приватные предложения будут приходить раньше, чем появятся на сайте.</p>
-        <form class="subscribe-form reveal" novalidate>
+        <form class="news-form" novalidate>
           <input type="email" name="email" placeholder="Ваш e-mail" aria-label="Ваш e-mail" autocomplete="email">
-          <button class="btn btn-gold" type="submit">Подписаться</button>
+          <button type="submit">Подписаться</button>
+          <p class="news-note" role="status" aria-live="polite"></p>
         </form>
-        <p class="subscribe-note" role="status" aria-live="polite"></p>
       </div>
     </section>
-
   </main>
 
   <footer class="site-footer">
@@ -883,47 +669,40 @@ a { color: inherit; text-decoration: none; }
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="logo" href="/">Мебель и свет</a>
-          <p>Люстры, лампы и мебель для дома, в котором хочется оставаться. Розничная продажа с доставкой по России.</p>
+          <p>Люстры, лампы и мебель для дома. Розничная продажа с доставкой по России.</p>
+          <div class="socials">
+            <a href="/" aria-label="Telegram"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l5 2 2 5 3-4 5 4 3-14z"/></svg></a>
+            <a href="/" aria-label="ВКонтакте"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8c1 6 5 9 9 9h1v-3c1 0 2 1 3 2l1 1h3c-1-2-2-3-3-4 1-1 2-2 3-4h-3c-1 2-2 3-3 3V8h-3v4c-2 0-4-2-4-4H4z"/></svg></a>
+            <a href="mailto:shop@mebel-i-svet.ru" aria-label="Почта"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
+          </div>
         </div>
-
         <div class="footer-col">
-          <h4>Магазин</h4>
+          <h3>Каталог</h3>
           <ul>
             <li><a href="/lyustry/">Люстры</a></li>
-            <li><a href="/lampy/">Лампы</a></li>
-            <li><a href="/mebel/">Мебель</a></li>
-            <li><a href="/brands/">Бренды</a></li>
+            <li><a href="/podvesy/">Подвесы</a></li>
+            <li><a href="/nastolnye/">Настольные лампы</a></li>
+            <li><a href="/torshery/">Торшеры</a></li>
+            <li><a href="/bra/">Бра</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Контакты</h4>
+          <h3>Покупателям</h3>
+          <ul>
+            <li><a href="/dostavka/">Доставка</a></li>
+            <li><a href="/oplata/">Оплата</a></li>
+            <li><a href="/vozvrat/">Возврат</a></li>
+            <li><a href="/garantiya/">Гарантия</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Контакты</h3>
           <ul>
             <li>г. Москва, ул. Светотехническая, 14</li>
             <li><a href="tel:+74951204567">+7 (495) 120-45-67</a></li>
             <li><a href="mailto:shop@mebel-i-svet.ru">shop@mebel-i-svet.ru</a></li>
+            <li>Ежедневно 10:00–21:00</li>
           </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Доставка</h4>
-          <ul>
-            <li>Авто</li>
-            <li>Курьер</li>
-            <li>Ж/д</li>
-          </ul>
-          <h4>Мы в сети</h4>
-          <div class="socials">
-            <a href="/" aria-label="Telegram">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l5 2 2 5 3-4 5 4 3-14z"/></svg>
-            </a>
-            <a href="/" aria-label="ВКонтакте">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8c1 6 5 9 9 9h1v-3c1 0 2 1 3 2l1 1h3c-1-2-2-3-3-4 1-1 2-2 3-4h-3c-1 2-2 3-3 3V8h-3v4c-2 0-4-2-4-4H4z"/></svg>
-            </a>
-            <a href="mailto:shop@mebel-i-svet.ru" aria-label="Почта">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -931,40 +710,20 @@ a { color: inherit; text-decoration: none; }
   </footer>
 
   <script>
-/* «Мебель и свет» — поведение макета. Все обработчики через addEventListener. */
+/* «Мебель и свет» — каталог. Все обработчики через addEventListener. */
 (function () {
   "use strict";
-
-  // Включаем стартовое скрытое состояние reveal только при работающем JS
   document.documentElement.classList.add("js");
 
-  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   document.addEventListener("DOMContentLoaded", function () {
-    initReveal();
-    initNavToggle();
-    initSubscribe();
-    initCart();
+    initNav();
+    initCatalog();
+    initFavorites();
+    initNewsletter();
+    initMore();
   });
 
-  function initReveal() {
-    var items = document.querySelectorAll(".reveal");
-    if (prefersReduced || !("IntersectionObserver" in window)) {
-      for (var i = 0; i < items.length; i++) items[i].classList.add("is-visible");
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.16 });
-    items.forEach(function (el) { io.observe(el); });
-  }
-
-  function initNavToggle() {
+  function initNav() {
     var toggle = document.querySelector(".nav-toggle");
     var nav = document.querySelector(".main-nav");
     if (!toggle || !nav) return;
@@ -980,9 +739,73 @@ a { color: inherit; text-decoration: none; }
     });
   }
 
-  function initSubscribe() {
-    var form = document.querySelector(".subscribe-form");
-    var note = document.querySelector(".subscribe-note");
+  function initCatalog() {
+    var grid = document.querySelector("[data-grid]");
+    if (!grid) return;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
+    var original = cards.slice();
+    var countEl = document.querySelector("[data-count]");
+    var stockOnly = false;
+
+    function applyStock() {
+      cards.forEach(function (c) {
+        var hide = stockOnly && c.getAttribute("data-stock") !== "in";
+        c.classList.toggle("is-hidden", hide);
+      });
+    }
+    function updateCount() {
+      if (!countEl) return;
+      var visible = cards.filter(function (c) { return !c.classList.contains("is-hidden"); }).length;
+      countEl.textContent = String(visible);
+    }
+    function sortBy(mode) {
+      var arr = original.slice();
+      if (mode === "cheap") arr.sort(function (a, b) { return num(a) - num(b); });
+      else if (mode === "exp") arr.sort(function (a, b) { return num(b) - num(a); });
+      else if (mode === "name") arr.sort(function (a, b) {
+        return a.getAttribute("data-name").localeCompare(b.getAttribute("data-name"), "ru");
+      });
+      arr.forEach(function (c) { grid.appendChild(c); });
+    }
+    function num(c) { return parseInt(c.getAttribute("data-price"), 10) || 0; }
+
+    var stockChip = document.querySelector('.chip[data-filter="stock"]');
+    if (stockChip) {
+      stockChip.addEventListener("click", function () {
+        stockOnly = !stockOnly;
+        stockChip.classList.toggle("is-on", stockOnly);
+        applyStock();
+        updateCount();
+      });
+    }
+    // other chips: visual toggle only (demo)
+    document.querySelectorAll(".chip:not([data-filter])").forEach(function (chip) {
+      if (chip.textContent.trim() === "Фильтры") return;
+      chip.addEventListener("click", function () { chip.classList.toggle("is-on"); });
+    });
+
+    var sortSel = document.querySelector("[data-sort]");
+    if (sortSel) sortSel.addEventListener("change", function () { sortBy(sortSel.value); });
+
+    updateCount();
+  }
+
+  function initFavorites() {
+    var counter = document.querySelector("[data-fav-count]");
+    var count = 0;
+    document.querySelectorAll(".fav").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var on = btn.classList.toggle("is-on");
+        count += on ? 1 : -1;
+        if (count < 0) count = 0;
+        if (counter) counter.textContent = String(count);
+      });
+    });
+  }
+
+  function initNewsletter() {
+    var form = document.querySelector(".news-form");
+    var note = document.querySelector(".news-note");
     if (!form) return;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -998,16 +821,13 @@ a { color: inherit; text-decoration: none; }
     });
   }
 
-  function initCart() {
-    var counter = document.querySelector(".cart-count");
-    var buttons = document.querySelectorAll(".prod-add");
-    if (!counter) return;
-    var count = 0;
-    buttons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        count += 1;
-        counter.textContent = String(count);
-      });
+  function initMore() {
+    var btn = document.querySelector(".btn-more");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      btn.textContent = "Показаны все товары категории";
+      btn.disabled = true;
+      btn.classList.add("is-done");
     });
   }
 })();

@@ -3,210 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Мебель и свет — люстры, лампы и мебель для дома</title>
-  <meta name="description" content="Интернет-магазин «Мебель и свет»: люстры, лампы и мебель ручной работы. Доставка по Москве и России — авто, курьер, ж/д.">
+  <title>Освещение — люстры, лампы и светильники | Мебель и свет</title>
+  <meta name="description" content="Каталог освещения «Мебель и свет»: люстры, подвесы, настольные лампы, торшеры, бра и потолочные светильники. Доставка по России.">
   <meta name="theme-color" content="#15243F">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="Мебель и свет — люстры, лампы и мебель для дома">
-  <meta property="og:description" content="Люстры, лампы и мебель ручной работы. Доставка по Москве и России.">
+  <meta property="og:title" content="Освещение — Мебель и свет">
+  <meta property="og:description" content="Люстры, лампы, бра и потолочные светильники. Доставка по России.">
   <meta property="og:site_name" content="Мебель и свет">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2315243F'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23C9A24C'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="topbar">Бесплатная доставка по Москве при заказе от 30&nbsp;000&nbsp;₽</div>
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="f-pendant" viewBox="0 0 120 120">
+      <path d="M42 18 H78"/><path d="M60 18 V42"/>
+      <path d="M46 64 Q46 42 60 42 Q74 42 74 64"/><path d="M44 64 H76"/>
+      <circle cx="60" cy="72" r="5"/>
+    </symbol>
+    <symbol id="f-chandelier" viewBox="0 0 120 120">
+      <path d="M60 16 V26"/><circle cx="60" cy="29" r="3.4"/><path d="M60 32 V50"/>
+      <path d="M60 35 C46 37 40 44 40 52"/><path d="M60 35 C74 37 80 44 80 52"/>
+      <path d="M37 52 H43"/><path d="M57 50 H63"/><path d="M77 52 H83"/>
+      <circle cx="40" cy="56" r="4.6"/><circle cx="60" cy="54" r="4.6"/><circle cx="80" cy="56" r="4.6"/>
+    </symbol>
+    <symbol id="f-floor" viewBox="0 0 120 120">
+      <path d="M46 28 H74 L70 46 H50 Z"/><path d="M60 46 V94"/>
+      <path d="M48 96 Q60 100 72 96"/>
+    </symbol>
+    <symbol id="f-table" viewBox="0 0 120 120">
+      <path d="M48 38 H72 L68 56 H52 Z"/><path d="M60 56 V76"/>
+      <path d="M52 80 Q60 84 68 80"/>
+    </symbol>
+    <symbol id="f-sconce" viewBox="0 0 120 120">
+      <path d="M32 34 V86"/><circle cx="32" cy="60" r="4.4"/>
+      <path d="M36 60 H58"/><path d="M58 60 V53"/>
+      <path d="M50 53 H66 L62 45 H54 Z"/><circle cx="58" cy="50" r="1.6"/>
+    </symbol>
+    <symbol id="f-flush" viewBox="0 0 120 120">
+      <path d="M38 38 H82"/><path d="M46 38 Q60 60 74 38"/>
+      <path d="M52 38 Q60 51 68 38"/><circle cx="60" cy="50" r="2.4"/>
+    </symbol>
+  </svg>
+
+  <div class="promo">Летняя распродажа — <strong>скидки до 50%</strong> на освещение · Бесплатная доставка от 30 000 ₽</div>
 
   <header class="site-header">
     <div class="container header-inner">
       <button class="icon-btn nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="main-nav">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
-
       <a class="logo" href="/">Мебель и свет</a>
-
       <nav class="main-nav" id="main-nav" aria-label="Основное меню">
         <ul>
+          <li><a class="is-active" href="/osveshchenie/">Освещение</a></li>
           <li><a href="/lyustry/">Люстры</a></li>
           <li><a href="/lampy/">Лампы</a></li>
+          <li><a href="/bra/">Бра</a></li>
           <li><a href="/mebel/">Мебель</a></li>
-          <li><a href="/brands/">Бренды</a></li>
+          <li><a href="/sale/">Распродажа</a></li>
         </ul>
       </nav>
-
       <div class="header-actions">
         <button class="icon-btn" type="button" aria-label="Поиск">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
         </button>
+        <button class="icon-btn" type="button" aria-label="Личный кабинет">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>
+        </button>
+        <button class="icon-btn" type="button" aria-label="Избранное">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg>
+          <span class="count-badge" data-fav-count>0</span>
+        </button>
         <button class="icon-btn" type="button" aria-label="Корзина">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
-          <span class="cart-count">0</span>
+          <span class="count-badge">0</span>
         </button>
       </div>
     </div>
   </header>
 
   <main>
+    <div class="container">
+      <nav class="crumbs" aria-label="Хлебные крошки">
+        <a href="/">Главная</a> / <span>Освещение</span>
+      </nav>
 
-    <!-- Экран 1 — Hero -->
-    <section class="hero">
-      <div class="hero-chandelier" aria-hidden="true"><svg class="chandelier" viewBox="0 0 260 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><defs><radialGradient id="chGlow" cx="50%" cy="50%" r="62%"><stop offset="0%" stop-color="#E2C681" stop-opacity="0.5"/><stop offset="44%" stop-color="#C9A24C" stop-opacity="0.14"/><stop offset="100%" stop-color="#C9A24C" stop-opacity="0"/></radialGradient><radialGradient id="chInner" cx="50%" cy="56%" r="55%"><stop offset="0%" stop-color="#FFE9B0" stop-opacity="0.42"/><stop offset="55%" stop-color="#E2C681" stop-opacity="0.12"/><stop offset="100%" stop-color="#E2C681" stop-opacity="0"/></radialGradient></defs><ellipse cx="130" cy="210" rx="150" ry="200" fill="url(#chGlow)"/><ellipse class="ch-line" cx="130" cy="6" rx="18" ry="4"/><ellipse class="ch-line" cx="130" cy="11" rx="13.5" ry="3.3"/><ellipse class="ch-line" cx="130" cy="16" rx="9.5" ry="2.8"/><line class="ch-line" x1="130" y1="19" x2="130" y2="30"/><ellipse class="ch-line" cx="130" cy="34" rx="13" ry="4"/><ellipse class="ch-line ch-ring" cx="130" cy="208" rx="118" ry="22"/><ellipse class="ch-line ch-ring" cx="130" cy="208" rx="113" ry="19.6"/><path class="ch-strand" d="M 142.0 34.0 Q 264.5 109.0 248.0 208.0"/><path class="ch-strand" d="M 141.3 35.4 Q 256.4 109.0 240.9 215.5"/><path class="ch-strand" d="M 139.2 36.6 Q 233.0 109.0 220.4 222.1"/><path class="ch-strand" d="M 136.0 37.5 Q 197.3 109.0 189.0 227.1"/><path class="ch-strand" d="M 132.1 37.9 Q 153.4 109.0 150.5 229.7"/><path class="ch-strand" d="M 127.9 37.9 Q 106.6 109.0 109.5 229.7"/><path class="ch-strand" d="M 124.0 37.5 Q 62.7 109.0 71.0 227.1"/><path class="ch-strand" d="M 120.8 36.6 Q 27.0 109.0 39.6 222.1"/><path class="ch-strand" d="M 118.7 35.4 Q 3.6 109.0 19.1 215.5"/><path class="ch-strand" d="M 118.0 34.0 Q -4.5 109.0 12.0 208.0"/><path class="ch-strand" d="M 118.7 32.6 Q 3.6 109.0 19.1 200.5"/><path class="ch-strand" d="M 120.8 31.4 Q 27.0 109.0 39.6 193.9"/><path class="ch-strand" d="M 124.0 30.5 Q 62.7 109.0 71.0 188.9"/><path class="ch-strand" d="M 127.9 30.1 Q 106.6 109.0 109.5 186.3"/><path class="ch-strand" d="M 132.1 30.1 Q 153.4 109.0 150.5 186.3"/><path class="ch-strand" d="M 136.0 30.5 Q 197.3 109.0 189.0 188.9"/><path class="ch-strand" d="M 139.2 31.4 Q 233.0 109.0 220.4 193.9"/><path class="ch-strand" d="M 141.3 32.6 Q 256.4 109.0 240.9 200.5"/><ellipse cx="130" cy="238" rx="94" ry="120" fill="url(#chInner)"/><path class="ch-strand" d="M 248.0 208.0 Q 250.4 292.0 140.0 360.0"/><path class="ch-strand" d="M 240.9 215.5 Q 243.1 292.0 139.4 361.0"/><path class="ch-strand" d="M 220.4 222.1 Q 222.2 292.0 137.7 361.9"/><path class="ch-strand" d="M 189.0 227.1 Q 190.2 292.0 135.0 362.6"/><path class="ch-strand" d="M 150.5 229.7 Q 150.9 292.0 131.7 363.0"/><path class="ch-strand" d="M 109.5 229.7 Q 109.1 292.0 128.3 363.0"/><path class="ch-strand" d="M 71.0 227.1 Q 69.8 292.0 125.0 362.6"/><path class="ch-strand" d="M 39.6 222.1 Q 37.8 292.0 122.3 361.9"/><path class="ch-strand" d="M 19.1 215.5 Q 16.9 292.0 120.6 361.0"/><path class="ch-strand" d="M 12.0 208.0 Q 9.6 292.0 120.0 360.0"/><path class="ch-strand" d="M 19.1 200.5 Q 16.9 292.0 120.6 359.0"/><path class="ch-strand" d="M 39.6 193.9 Q 37.8 292.0 122.3 358.1"/><path class="ch-strand" d="M 71.0 188.9 Q 69.8 292.0 125.0 357.4"/><path class="ch-strand" d="M 109.5 186.3 Q 109.1 292.0 128.3 357.0"/><path class="ch-strand" d="M 150.5 186.3 Q 150.9 292.0 131.7 357.0"/><path class="ch-strand" d="M 189.0 188.9 Q 190.2 292.0 135.0 357.4"/><path class="ch-strand" d="M 220.4 193.9 Q 222.2 292.0 137.7 358.1"/><path class="ch-strand" d="M 240.9 200.5 Q 243.1 292.0 139.4 359.0"/><path class="ch-drop" d="M 240.8837292527372 217.52444315316473 C 237.9 222.6 237.9 229.8 240.8837292527372 232.52444315316473 C 243.9 229.8 243.9 222.6 240.8837292527372 217.52444315316473 Z"/><path class="ch-drop" d="M 220.3932442880394 224.14132741310385 C 217.4 229.2 217.4 236.4 220.3932442880394 239.14132741310385 C 223.4 236.4 223.4 229.2 220.3932442880394 224.14132741310385 Z"/><path class="ch-drop" d="M 189.0 229.05255888325766 C 186.0 234.2 186.0 241.4 189.0 244.05255888325766 C 192.0 241.4 192.0 234.2 189.0 229.05255888325766 Z"/><path class="ch-drop" d="M 150.4904849646978 231.66577056626858 C 147.5 236.8 147.5 244.0 150.4904849646978 246.66577056626858 C 153.5 244.0 153.5 236.8 150.4904849646978 231.66577056626858 Z"/><path class="ch-drop" d="M 109.50951503530223 231.66577056626858 C 106.5 236.8 106.5 244.0 109.50951503530223 246.66577056626858 C 112.5 244.0 112.5 236.8 109.50951503530223 231.66577056626858 Z"/><path class="ch-drop" d="M 71.00000000000003 229.05255888325766 C 68.0 234.2 68.0 241.4 71.00000000000003 244.05255888325766 C 74.0 241.4 74.0 234.2 71.00000000000003 229.05255888325766 Z"/><path class="ch-drop" d="M 39.6067557119606 224.14132741310388 C 36.6 229.2 36.6 236.4 39.6067557119606 239.14132741310388 C 42.6 236.4 42.6 229.2 39.6067557119606 224.14132741310388 Z"/><path class="ch-drop" d="M 19.116270747262817 217.52444315316473 C 16.1 222.6 16.1 229.8 19.116270747262817 232.52444315316473 C 22.1 229.8 22.1 222.6 19.116270747262817 217.52444315316473 Z"/><ellipse class="ch-line" cx="130" cy="360" rx="10" ry="3"/><ellipse class="ch-drop" cx="130" cy="370" rx="3.2" ry="5.5"/><path class="ch-drop" d="M 130 378 C 124.0 386.8 124.0 399.3 130 404 C 136.0 399.3 136.0 386.8 130 378 Z"/><path class="ch-spark1" d="M 72 147.60855051165015 L 72.7 149.3 L 74.39144948834985 150 L 72.7 150.7 L 72 152.39144948834985 L 71.3 150.7 L 69.60855051165015 150 L 71.3 149.3 Z"/><path class="ch-spark2" d="M 100 117.76423574346795 L 100.6 119.4 L 102.23576425653205 120 L 100.6 120.6 L 100 122.23576425653205 L 99.4 120.6 L 97.76423574346795 120 L 99.4 119.4 Z"/><path class="ch-spark3" d="M 150 127.31415897426413 L 150.8 129.2 L 152.68584102573587 130 L 150.8 130.8 L 150 132.68584102573587 L 149.2 130.8 L 147.31415897426413 130 L 149.2 129.2 Z"/><path class="ch-spark1" d="M 186 153.8348073419992 L 186.6 155.4 L 188.1651926580008 156 L 186.6 156.6 L 186 158.1651926580008 L 185.4 156.6 L 183.8348073419992 156 L 185.4 155.4 Z"/><path class="ch-spark2" d="M 60 202.417706196124 L 60.7 204.3 L 62.58229380387602 205 L 60.7 205.7 L 60 207.582293803876 L 59.3 205.7 L 57.41770619612398 205 L 59.3 204.3 Z"/><path class="ch-spark3" d="M 200 202.57087997477868 L 200.7 204.3 L 202.42912002522132 205 L 200.7 205.7 L 200 207.42912002522132 L 199.3 205.7 L 197.57087997477868 205 L 199.3 204.3 Z"/><path class="ch-spark1" d="M 96 247.84780096770277 L 96.6 249.4 L 98.15219903229723 250 L 96.6 250.6 L 96 252.15219903229723 L 95.4 250.6 L 93.84780096770277 250 L 95.4 249.4 Z"/><path class="ch-spark2" d="M 165 252.44330784012953 L 165.7 254.3 L 167.55669215987047 255 L 165.7 255.7 L 165 257.55669215987047 L 164.3 255.7 L 162.44330784012953 255 L 164.3 254.3 Z"/><path class="ch-spark3" d="M 110 297.8662539074022 L 110.6 299.4 L 112.13374609259779 300 L 110.6 300.6 L 110 302.1337460925978 L 109.4 300.6 L 107.86625390740221 300 L 109.4 299.4 Z"/><path class="ch-spark1" d="M 150 302.50971888470383 L 150.7 304.3 L 152.49028111529614 305 L 150.7 305.7 L 150 307.49028111529617 L 149.3 305.7 L 147.50971888470386 305 L 149.3 304.3 Z"/><path class="ch-spark2" d="M 130 207.83713011878285 L 130.6 209.4 L 132.16286988121715 210 L 130.6 210.6 L 130 212.16286988121715 L 129.4 210.6 L 127.83713011878284 210 L 129.4 209.4 Z"/><path class="ch-spark3" d="M 130 342.8183582879905 L 130.6 344.4 L 132.18164171200948 345 L 130.6 345.6 L 130 347.1816417120095 L 129.4 345.6 L 127.81835828799052 345 L 129.4 344.4 Z"/><path class="ch-spark1" d="M 82 327.51793272977176 L 82.7 329.3 L 84.48206727022826 330 L 82.7 330.7 L 82 332.48206727022824 L 81.3 330.7 L 79.51793272977174 330 L 81.3 329.3 Z"/><path class="ch-spark2" d="M 178 327.15583308779514 L 178.8 329.2 L 180.84416691220483 330 L 178.8 330.8 L 178 332.84416691220486 L 177.2 330.8 L 175.15583308779517 330 L 177.2 329.2 Z"/></svg></div>
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <p class="eyebrow eyebrow--light reveal">Коллекция 2026</p>
-          <h1 class="reveal">Искусство света<br>в вашем доме</h1>
-          <p class="reveal">Люстры, лампы и мебель, собранные с вниманием к деталям — для дома, в котором хочется оставаться.</p>
-          <div class="hero-actions reveal">
-            <a class="btn btn-gold" href="/catalog/">Смотреть коллекцию</a>
-            <a class="btn btn-ghost" href="/designer/">Выбор дизайнера</a>
+      <div class="page-head">
+        <h1>Освещение</h1>
+        <p>Люстры, подвесы, настольные лампы, торшеры, бра и потолочные светильники — выберите свет для каждой комнаты.</p>
+      </div>
+
+      <section class="subcats" aria-label="Подкатегории">
+        <div class="subcat-row">
+          <a class="subcat" href="/lyustry/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg><span>Люстры</span></a>
+          <a class="subcat" href="/podvesy/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-pendant"/></svg><span>Подвесы</span></a>
+          <a class="subcat" href="/nastolnye/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-table"/></svg><span>Настольные лампы</span></a>
+          <a class="subcat" href="/torshery/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-floor"/></svg><span>Торшеры</span></a>
+          <a class="subcat" href="/bra/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-sconce"/></svg><span>Бра</span></a>
+          <a class="subcat" href="/potolochnye/"><svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-flush"/></svg><span>Потолочные</span></a>
+        </div>
+      </section>
+
+      <div class="toolbar">
+        <div class="filters">
+          <button class="chip" type="button" aria-label="Фильтры">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg> Фильтры
+          </button>
+          <button class="chip" type="button" data-filter="stock">В наличии</button>
+          <button class="chip" type="button">Цена</button>
+          <button class="chip" type="button">Тип</button>
+          <button class="chip" type="button">Цвет</button>
+        </div>
+        <div class="toolbar-right">
+          <span class="count"><b data-count>12</b> товаров</span>
+          <label class="sort">
+            <span class="sr-only">Сортировка</span>
+            <select data-sort>
+              <option value="popular">Популярные</option>
+              <option value="cheap">Сначала дешевле</option>
+              <option value="exp">Сначала дороже</option>
+              <option value="name">По названию</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <section class="product-grid" data-grid aria-label="Товары">
+
+        <article class="card" data-price="8900" data-name="Орбита" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--new">Новинка</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-pendant"/></svg>
           </div>
-        </div>
+          <div class="card-body">
+            <p class="card-type">Подвес</p><h3 class="card-name">Орбита</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
+            <p class="price"><b>8 900 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="42500" data-name="Вена" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--hit">Хит</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Люстра</p><h3 class="card-name">Вена</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-chrome"></span><span class="swatch sw-black"></span></div>
+            <p class="price"><b>42 500 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="14700" data-name="Норд" data-stock="out">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-floor"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Торшер</p><h3 class="card-name">Норд</h3>
+            <div class="swatches"><span class="swatch sw-black"></span><span class="swatch sw-emerald"></span></div>
+            <p class="price"><b>14 700 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="6400" data-name="Сатин" data-stock="in">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-table"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Настольная лампа</p><h3 class="card-name">Сатин</h3>
+            <div class="swatches"><span class="swatch sw-white"></span><span class="swatch sw-gold"></span></div>
+            <p class="price"><b>6 400 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="4900" data-name="Линия" data-stock="out">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-sconce"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Бра</p><h3 class="card-name">Линия</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
+            <p class="price"><b>4 900 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="9200" data-name="Диск" data-stock="in">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-flush"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Потолочный</p><h3 class="card-name">Диск</h3>
+            <div class="swatches"><span class="swatch sw-white"></span><span class="swatch sw-chrome"></span></div>
+            <p class="price"><b>9 200 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="56200" data-name="Каскад" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--sale">−20%</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Люстра</p><h3 class="card-name">Каскад</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-chrome"></span></div>
+            <p class="price"><del>70 200 ₽</del> <b>56 200 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="5600" data-name="Колба" data-stock="out">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-pendant"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Подвес</p><h3 class="card-name">Колба</h3>
+            <div class="swatches"><span class="swatch sw-black"></span><span class="swatch sw-chrome"></span></div>
+            <p class="price"><b>5 600 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="19900" data-name="Арка" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--hit">Хит</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-floor"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Торшер</p><h3 class="card-name">Арка</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span></div>
+            <p class="price"><b>19 900 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="7800" data-name="Грин" data-stock="in">
+          <div class="card-media">
+            <span class="badge badge--new">Новинка</span>
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-table"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Настольная лампа</p><h3 class="card-name">Грин</h3>
+            <div class="swatches"><span class="swatch sw-emerald"></span><span class="swatch sw-white"></span></div>
+            <p class="price"><b>7 800 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="6300" data-name="Дуга" data-stock="out">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-sconce"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Бра</p><h3 class="card-name">Дуга</h3>
+            <div class="swatches"><span class="swatch sw-chrome"></span><span class="swatch sw-gold"></span></div>
+            <p class="price"><b>6 300 ₽</b></p>
+          </div>
+        </article>
+
+        <article class="card" data-price="38400" data-name="Корона" data-stock="in">
+          <div class="card-media">
+            <button class="fav" type="button" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.8 3.8 0 0 1 12 7a3.8 3.8 0 0 1 7 3.8C19 15.6 12 20 12 20z"/></svg></button>
+            <svg class="fixture" viewBox="0 0 120 120" aria-hidden="true"><use href="#f-chandelier"/></svg>
+          </div>
+          <div class="card-body">
+            <p class="card-type">Люстра</p><h3 class="card-name">Корона</h3>
+            <div class="swatches"><span class="swatch sw-gold"></span><span class="swatch sw-black"></span><span class="swatch sw-chrome"></span></div>
+            <p class="price"><b>38 400 ₽</b></p>
+          </div>
+        </article>
+
+      </section>
+
+      <div class="more-wrap">
+        <button class="btn-more" type="button">Показать ещё</button>
       </div>
-    </section>
+    </div>
 
-    <!-- Экран 2 — Категории -->
-    <section class="categories">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Категории</p>
-          <h2 class="section-title">Свет и уют для каждой комнаты</h2>
+    <section class="newsletter">
+      <div class="container newsletter-inner">
+        <div>
+          <h2>Свет со скидкой — первым</h2>
+          <p>Подпишитесь: новинки и закрытые предложения будем присылать раньше, чем они появятся в каталоге.</p>
         </div>
-
-        <div class="cat-grid">
-          <a class="cat-card reveal" href="/lyustry/">
-            <div class="cat-icon">
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M24 6v6"/><path d="M10 18q14-9 28 0"/>
-                <path d="M10 18v4M24 12v4M38 18v4"/>
-                <circle cx="10" cy="26" r="3.4"/><circle cx="24" cy="26" r="3.4"/><circle cx="38" cy="26" r="3.4"/>
-              </svg>
-            </div>
-            <h3>Люстры</h3>
-            <p>Центральный свет с характером — от классики до модерна.</p>
-            <span class="cat-link">Смотреть
-              <svg class="icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
-
-          <a class="cat-card reveal" href="/lampy/">
-            <div class="cat-icon">
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M16 22h16l-4-12H20z"/>
-                <path d="M24 22v16"/>
-                <path d="M16 39q8-4 16 0"/>
-              </svg>
-            </div>
-            <h3>Лампы</h3>
-            <p>Мягкий свет для вечеров — настольные и напольные модели.</p>
-            <span class="cat-link">Смотреть
-              <svg class="icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
-
-          <a class="cat-card reveal" href="/mebel/">
-            <div class="cat-icon">
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M9 30v-6a3 3 0 0 1 3-3h24a3 3 0 0 1 3 3v6"/>
-                <rect x="7" y="30" width="34" height="9" rx="2"/>
-                <path d="M12 39v4M36 39v4"/>
-              </svg>
-            </div>
-            <h3>Мебель</h3>
-            <p>Комфорт, который чувствуешь — кресла, диваны и акценты.</p>
-            <span class="cat-link">Смотреть
-              <svg class="icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Экран 3 — Выбор дизайнера -->
-    <section class="designer">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow eyebrow--light">Выбор дизайнера</p>
-          <h2 class="section-title section-title--light">Избранное этого сезона</h2>
-        </div>
-
-        <div class="stage">
-        <span class="spotlight spotlight--t" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
-        <span class="spotlight spotlight--bl" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
-        <span class="spotlight spotlight--br" aria-hidden="true"><svg class="spot-svg" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><line class="spot-stroke" x1="18" y1="4" x2="30" y2="4"/><line class="spot-stroke" x1="24" y1="4" x2="24" y2="9"/><circle class="spot-stroke" cx="24" cy="11" r="2"/><line class="spot-stroke" x1="17.5" y1="10.5" x2="19" y2="15"/><line class="spot-stroke" x1="30.5" y1="10.5" x2="29" y2="15"/><ellipse class="spot-stroke" cx="24" cy="15" rx="6" ry="2.4"/><line class="spot-stroke" x1="18" y1="15" x2="18" y2="31"/><line class="spot-stroke" x1="30" y1="15" x2="30" y2="31"/><line class="spot-stroke" x1="18" y1="31" x2="15" y2="36"/><line class="spot-stroke" x1="30" y1="31" x2="33" y2="36"/><ellipse class="spot-lens" cx="24" cy="31" rx="6" ry="2.4"/></svg></span>
-        <div class="prod-grid">
-          <article class="prod-card reveal">
-            <div class="prod-media">
-              <span class="badge">Хит</span>
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v6"/><path d="M10 18q14-9 28 0"/><path d="M10 18v4M24 12v4M38 18v4"/><circle cx="10" cy="26" r="3.4"/><circle cx="24" cy="26" r="3.4"/><circle cx="38" cy="26" r="3.4"/></svg>
-            </div>
-            <div class="prod-body">
-              <span class="prod-kind">Люстра</span>
-              <h3 class="prod-name">Кьяра</h3>
-              <span class="prod-price">48&nbsp;900&nbsp;₽</span>
-              <button class="btn btn-gold prod-add" type="button">В корзину</button>
-            </div>
-          </article>
-
-          <article class="prod-card reveal">
-            <div class="prod-media">
-              <span class="badge">Новинка</span>
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 22h16l-4-12H20z"/><path d="M24 22v16"/><path d="M16 39q8-4 16 0"/></svg>
-            </div>
-            <div class="prod-body">
-              <span class="prod-kind">Лампа</span>
-              <h3 class="prod-name">Аврора</h3>
-              <span class="prod-price">12&nbsp;400&nbsp;₽</span>
-              <button class="btn btn-gold prod-add" type="button">В корзину</button>
-            </div>
-          </article>
-
-          <article class="prod-card reveal">
-            <div class="prod-media">
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 28v-4a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v4"/><rect x="10" y="28" width="28" height="8" rx="2"/><path d="M14 36v4M34 36v4"/><path d="M12 24v-2M36 24v-2"/></svg>
-            </div>
-            <div class="prod-body">
-              <span class="prod-kind">Кресло</span>
-              <h3 class="prod-name">Бергамо</h3>
-              <span class="prod-price">34&nbsp;700&nbsp;₽</span>
-              <button class="btn btn-gold prod-add" type="button">В корзину</button>
-            </div>
-          </article>
-
-          <article class="prod-card reveal">
-            <div class="prod-media">
-              <span class="badge">Хит</span>
-              <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v5"/><path d="M8 16q16-8 32 0"/><path d="M8 16v5M16 13v4M24 11v5M32 13v4M40 16v5"/><circle cx="8" cy="25" r="2.8"/><circle cx="16" cy="22" r="2.8"/><circle cx="24" cy="20" r="2.8"/><circle cx="32" cy="22" r="2.8"/><circle cx="40" cy="25" r="2.8"/></svg>
-            </div>
-            <div class="prod-body">
-              <span class="prod-kind">Люстра</span>
-              <h3 class="prod-name">Каскад</h3>
-              <span class="prod-price">56&nbsp;200&nbsp;₽</span>
-              <button class="btn btn-gold prod-add" type="button">В корзину</button>
-            </div>
-          </article>
-        </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Экран 4 — Подписка -->
-    <section class="subscribe">
-      <div class="container subscribe-inner">
-        <p class="eyebrow eyebrow--light reveal">Закрытый клуб</p>
-        <h2 class="reveal">Закрытые скидки — первым</h2>
-        <p class="reveal">Оставьте почту: новинки и приватные предложения будут приходить раньше, чем появятся на сайте.</p>
-        <form class="subscribe-form reveal" novalidate>
+        <form class="news-form" novalidate>
           <input type="email" name="email" placeholder="Ваш e-mail" aria-label="Ваш e-mail" autocomplete="email">
-          <button class="btn btn-gold" type="submit">Подписаться</button>
+          <button type="submit">Подписаться</button>
+          <p class="news-note" role="status" aria-live="polite"></p>
         </form>
-        <p class="subscribe-note" role="status" aria-live="polite"></p>
       </div>
     </section>
-
   </main>
 
   <footer class="site-footer">
@@ -214,47 +311,40 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="logo" href="/">Мебель и свет</a>
-          <p>Люстры, лампы и мебель для дома, в котором хочется оставаться. Розничная продажа с доставкой по России.</p>
+          <p>Люстры, лампы и мебель для дома. Розничная продажа с доставкой по России.</p>
+          <div class="socials">
+            <a href="/" aria-label="Telegram"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l5 2 2 5 3-4 5 4 3-14z"/></svg></a>
+            <a href="/" aria-label="ВКонтакте"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8c1 6 5 9 9 9h1v-3c1 0 2 1 3 2l1 1h3c-1-2-2-3-3-4 1-1 2-2 3-4h-3c-1 2-2 3-3 3V8h-3v4c-2 0-4-2-4-4H4z"/></svg></a>
+            <a href="mailto:shop@mebel-i-svet.ru" aria-label="Почта"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
+          </div>
         </div>
-
         <div class="footer-col">
-          <h4>Магазин</h4>
+          <h3>Каталог</h3>
           <ul>
             <li><a href="/lyustry/">Люстры</a></li>
-            <li><a href="/lampy/">Лампы</a></li>
-            <li><a href="/mebel/">Мебель</a></li>
-            <li><a href="/brands/">Бренды</a></li>
+            <li><a href="/podvesy/">Подвесы</a></li>
+            <li><a href="/nastolnye/">Настольные лампы</a></li>
+            <li><a href="/torshery/">Торшеры</a></li>
+            <li><a href="/bra/">Бра</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
-          <h4>Контакты</h4>
+          <h3>Покупателям</h3>
+          <ul>
+            <li><a href="/dostavka/">Доставка</a></li>
+            <li><a href="/oplata/">Оплата</a></li>
+            <li><a href="/vozvrat/">Возврат</a></li>
+            <li><a href="/garantiya/">Гарантия</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Контакты</h3>
           <ul>
             <li>г. Москва, ул. Светотехническая, 14</li>
             <li><a href="tel:+74951204567">+7 (495) 120-45-67</a></li>
             <li><a href="mailto:shop@mebel-i-svet.ru">shop@mebel-i-svet.ru</a></li>
+            <li>Ежедневно 10:00–21:00</li>
           </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Доставка</h4>
-          <ul>
-            <li>Авто</li>
-            <li>Курьер</li>
-            <li>Ж/д</li>
-          </ul>
-          <h4>Мы в сети</h4>
-          <div class="socials">
-            <a href="/" aria-label="Telegram">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 5L3 12l5 2 2 5 3-4 5 4 3-14z"/></svg>
-            </a>
-            <a href="/" aria-label="ВКонтакте">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8c1 6 5 9 9 9h1v-3c1 0 2 1 3 2l1 1h3c-1-2-2-3-3-4 1-1 2-2 3-4h-3c-1 2-2 3-3 3V8h-3v4c-2 0-4-2-4-4H4z"/></svg>
-            </a>
-            <a href="mailto:shop@mebel-i-svet.ru" aria-label="Почта">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
-            </a>
-          </div>
         </div>
       </div>
     </div>
