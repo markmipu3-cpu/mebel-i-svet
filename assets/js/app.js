@@ -79,7 +79,7 @@
       '<div class="promo">Летняя распродажа — <strong>скидки до 50%</strong> на освещение · Бесплатная доставка от 30 000 ₽</div>' +
       '<div class="site-header"><div class="container header-inner">' +
         '<button class="icon-btn nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="main-nav">' + IC.menu + "</button>" +
-        '<a class="logo" href="' + link("") + '">Мебель и свет</a>' +
+        '<a class="logo" href="' + link("") + '"><img class="logo-img" src="' + asset("logo.png") + '" alt="Мебель и свет"></a>' +
         '<nav class="main-nav" id="main-nav" aria-label="Основное меню"><ul>' + navItems + "</ul></nav>" +
         '<div class="header-actions">' +
           '<button class="icon-btn" type="button" data-search-open aria-label="Поиск">' + IC.search + "</button>" +
